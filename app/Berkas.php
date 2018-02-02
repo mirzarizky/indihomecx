@@ -21,4 +21,8 @@ class Berkas extends Model
     protected $dates = [
         'created_at', 'updated_at'
     ];
+
+    public function pesanan() {
+        return $this->hasMany('App\Pesanan', 'berkas_id', 'id');
+    }
 }
