@@ -14,10 +14,10 @@ class CreatePesananTable extends Migration
     public function up()
     {
         Schema::create('pesanan', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigInteger('id')->primary()->unsigned();
             $table->date('tanggal');
             $table->string('namaPelanggan');
-            $table->integer('noHpPelanggan')->nullable();
+            $table->string('noHpPelanggan')->nullable();
             $table->string('emailPelanggan')->nullable();
             $table->string('status_kode');
             $table->string('cabang_kode');

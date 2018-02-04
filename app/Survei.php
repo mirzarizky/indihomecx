@@ -17,4 +17,8 @@ class Survei extends Model
     protected $dates = [
         'created_at', 'updated_at'
     ];
+
+    public function pesanan() {
+        return $this->hasOne('App\Pesanan', 'id', 'pesanan_id');
+    }
 }

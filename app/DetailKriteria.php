@@ -16,4 +16,12 @@ class DetailKriteria extends Model
     protected $dates = [
         'created_at', 'updated_at'
     ];
+
+    public function kriteria() {
+        return $this->hasMany('App\Kriteria', 'id', 'kriteria_id');
+    }
+
+    public function survei() {
+        return $this->hasMany('App\Survei', 'id', 'survei_id');
+    }
 }

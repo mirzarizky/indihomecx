@@ -22,13 +22,15 @@ Route::get('/hasone', function () {
 
 Route::get('/hasmany', function () {
     $role = \App\Role::first();
-    return $role->user[0]->name;
+    return $role->user;
 });
 
-Route::get('/isadmin', function () {
-    $user = \App\User::first();
-    return $user->isAdmin;
+
+Route::get('/cabang', function () {
+    $cabangs = \App\Cabang::where('kode', 'cne')->first();
+    return $cabangs->pesanan;
 });
+
 
 Auth::routes();
 
