@@ -38,6 +38,18 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    protected function credentials(Request $request)
+    {
+        $field = filter_var($request->get($this->username()), FILTER_VALIDATE_EMAIL)
+            ? $this->username()
+            : 'nik';
+
+        return [
+            $field => $request->get($this->username()),
+            'password' => $request->password,
+        ];
+    }
+
     protected function authenticated(Request $request, $user)
     {
         if($user->role->name == 'admin') {
@@ -45,6 +57,8 @@ class LoginController extends Controller
         }
         elseif ($user->role->name == 'supervisor') {
             return redirect()->route('spv');
+        } else {
+            return redirect()->back();
         }
     }
 }
