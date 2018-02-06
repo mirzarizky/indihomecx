@@ -53,7 +53,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if($user->role->name == 'admin') {
-            return redirect()->route('admin');
+            return redirect()->route('admin.index');
         }
         elseif ($user->role->name == 'supervisor') {
             return redirect()->route('spv');

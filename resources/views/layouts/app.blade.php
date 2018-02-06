@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('style')
 </head>
 <body>
     <div id="app">
@@ -71,10 +72,35 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="container">
+            <div class="row">
+                @if(Auth::check())
+                    <div class="col-lg-3">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="">Home</a></li>
+                            <li class="list-group-item"><a href="">Cabang</a></li>
+                            <li class="list-group-item"><a href="">Tags</a></li>
+                            @if(Auth::user()->role->name == 'admin')
+                                <li class="list-group-item"><a href="">Users</a></li>
+                                <li class="list-group-item"><a href="">New User</a></li>
+                            @endif
+                            <li class="list-group-item"><a href="">My Profile</a></li>
+                            <li class="list-group-item"><a href="">Create Tag</a></li>
+                            <li class="list-group-item"><a href="">All posts</a></li>
+                            <li class="list-group-item"><a href="">All trashed posts</a></li>
+                            <li class="list-group-item"><a href="">Create new category</a></li>
+                            <li class="list-group-item"><a href="">Create new post</a></li>
+                        </ul>
+                    </div>
+                @endif
+
+                @yield('content')
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('script')
 </body>
 </html>

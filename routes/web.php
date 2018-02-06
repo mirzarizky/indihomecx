@@ -29,16 +29,23 @@ Route::get('/hasmany', function () {
 Route::get('/cabang', function () {
     $cabangs = \App\Cabang::where('kode', 'cne')->first();
     return $cabangs->pesanan;
-});
+})->name('cabang');
 
 
 Auth::routes();
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', 'AdminController@index')->name('admin.index');
+    Route::get('/{model}/index', 'AdminController@index')->name('admin.model.index');
+    Route::get('/{model}/form', 'AdminController@indexForm')->name('admin.model.form');
+    Route::post('/{model}/create', 'AdminController@create')->name('admin.model.create');
+    Route::get('/{model}/{id}/update', 'AdminController@indexUpdate')->name('admin.model.updateForm');
+    Route::post('/{model}/{id}/update', 'AdminController@update')->name('admin.model.update');
+    Route::get('/{model}/{id}/delete', 'AdminController@delete')->name('admin.model.delete');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/spv', function () {
     return 'halo spv';
 })->name('spv');
-Route::get('/admin', function () {
-    return 'halo admin';
-})->name('admin');
 
