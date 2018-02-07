@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Model\CabangController;
+use App\Http\Controllers\Model\KriteriaController;
 use App\Http\Controllers\Model\UserController;
 use Illuminate\Http\Request;
 
@@ -31,6 +32,10 @@ class AdminController extends Controller
                 $userController = new UserController();
                 return $userController->index();
                 break;
+            case 'kriteria' :
+                $kriteriaController = new KriteriaController();
+                return $kriteriaController->index();
+                break;
             default :
                 return redirect()->route('admin.index');
                 break;
@@ -47,6 +52,11 @@ class AdminController extends Controller
             case 'user' :
                 $userController = new UserController();
                 return $userController->indexForm();
+                break;
+            case 'kriteria' :
+                $kriteriaController = new KriteriaController();
+                return $kriteriaController->indexForm();
+                break;
             default :
                 return redirect()->back();
                 break;
@@ -63,6 +73,11 @@ class AdminController extends Controller
             case 'user' :
                 $userController = new UserController();
                 return $userController->create($request);
+                break;
+            case 'kriteria' :
+                $kriteriaController = new KriteriaController();
+                return $kriteriaController->create($request);
+                break;
             default :
                 return redirect()->back();
                 break;
@@ -79,6 +94,11 @@ class AdminController extends Controller
             case 'user' :
                 $userController = new UserController();
                 return $userController->updateForm($id);
+                break;
+            case 'kriteria' :
+                $kriteriaController = new KriteriaController();
+                return $kriteriaController->updateForm($id);
+                break;
             default :
                 return redirect()->back();
                 break;
@@ -95,6 +115,11 @@ class AdminController extends Controller
             case 'user' :
                 $userController = new UserController();
                 return $userController->update($request, $id);
+                break;
+            case 'kriteria' :
+                $kriteriaController = new KriteriaController();
+                return $kriteriaController->update($request, $id);
+                break;
             default :
                 return redirect()->back();
                 break;
@@ -111,6 +136,11 @@ class AdminController extends Controller
             case 'user' :
                 $userController = new UserController();
                 return $userController->delete($id);
+                break;
+            case 'kriteria' :
+                $kriteriaController = new KriteriaController();
+                return $kriteriaController->delete($id);
+                break;
             default :
                 return redirect()->back();
                 break;
