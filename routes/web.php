@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/hasone', function () {
     $user = \App\User::first();
@@ -34,8 +34,13 @@ Route::get('/cabang', function () {
 
 Auth::routes();
 
+
+Route::get('/first', 'Model\UserController@firstLogin')->name('user.first');
+Route::post('/first', 'Model\UserController@updatePassword')->name('user.updatePassword');
+
+
 Route::prefix('admin')->group(function () {
-    Route::get('/', 'AdminController@index')->name('admin.index');
+    Route::get('/', 'AdminController@indexAdmin')->name('admin.index');
     Route::get('/{model}/index', 'AdminController@index')->name('admin.model.index');
     Route::get('/{model}/form', 'AdminController@indexForm')->name('admin.model.form');
     Route::post('/{model}/create', 'AdminController@create')->name('admin.model.create');

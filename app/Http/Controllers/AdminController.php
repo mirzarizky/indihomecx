@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Model\CabangController;
+use App\Http\Controllers\Model\UserController;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,6 +12,12 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('isAdmin');
+        $this->middleware('isDefaultPassword');
+    }
+
+    public function indexAdmin()
+    {
+        return view('admin.index');
     }
 
     public function index($model)
@@ -20,8 +27,12 @@ class AdminController extends Controller
                 $cabangController = new CabangController();
                 return $cabangController->index();
                 break;
+            case 'user' :
+                $userController = new UserController();
+                return $userController->index();
+                break;
             default :
-                return redirect()->back();
+                return redirect()->route('admin.index');
                 break;
         }
     }
@@ -33,6 +44,9 @@ class AdminController extends Controller
                 $cabangController = new CabangController();
                 return $cabangController->indexForm();
                 break;
+            case 'user' :
+                $userController = new UserController();
+                return $userController->indexForm();
             default :
                 return redirect()->back();
                 break;
@@ -46,6 +60,9 @@ class AdminController extends Controller
                 $cabangController = new CabangController();
                 return $cabangController->create($request);
                 break;
+            case 'user' :
+                $userController = new UserController();
+                return $userController->create($request);
             default :
                 return redirect()->back();
                 break;
@@ -59,6 +76,9 @@ class AdminController extends Controller
                 $cabangController = new CabangController();
                 return $cabangController->updateForm($id);
                 break;
+            case 'user' :
+                $userController = new UserController();
+                return $userController->updateForm($id);
             default :
                 return redirect()->back();
                 break;
@@ -72,6 +92,9 @@ class AdminController extends Controller
                 $cabangController = new CabangController();
                 return $cabangController->update($request, $id);
                 break;
+            case 'user' :
+                $userController = new UserController();
+                return $userController->update($request, $id);
             default :
                 return redirect()->back();
                 break;
@@ -85,6 +108,9 @@ class AdminController extends Controller
                 $cabangController = new CabangController();
                 return $cabangController->delete($id);
                 break;
+            case 'user' :
+                $userController = new UserController();
+                return $userController->delete($id);
             default :
                 return redirect()->back();
                 break;

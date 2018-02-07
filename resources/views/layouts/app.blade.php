@@ -77,12 +77,11 @@
                 @if(Auth::check())
                     <div class="col-lg-3">
                         <ul class="list-group">
-                            <li class="list-group-item"><a href="">Home</a></li>
-                            <li class="list-group-item"><a href="">Cabang</a></li>
-                            <li class="list-group-item"><a href="">Tags</a></li>
+                            <li class="list-group-item"><a href="{{route('admin.index')}}">Home</a></li>
+                            <li class="list-group-item"><a href="{{route('admin.model.index', ['model' => 'sto'])}}">Cabang</a></li>
                             @if(Auth::user()->role->name == 'admin')
-                                <li class="list-group-item"><a href="">Users</a></li>
-                                <li class="list-group-item"><a href="">New User</a></li>
+                                <li class="list-group-item"><a href="{{route('admin.model.index', ['model' => 'user'])}}">Users</a></li>
+                                <li class="list-group-item"><a href="{{route('admin.model.form', ['model' => 'user'])}}">New User</a></li>
                             @endif
                             <li class="list-group-item"><a href="">My Profile</a></li>
                             <li class="list-group-item"><a href="">Create Tag</a></li>
