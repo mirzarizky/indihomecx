@@ -21,6 +21,7 @@ class CreateBerkasTable extends Migration
             $table->date('tanggalAkhirPesanan');
             $table->integer('totalNoHp')->nullable();
             $table->integer('totalEmail')->nullable();
+            $table->bigInteger('totalPesanan')->nullable();
             $table->boolean('isSent')->default(false);
             $table->timestamps();
         });

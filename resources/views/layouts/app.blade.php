@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('style')
 </head>
 <body>
     <div id="app">
@@ -71,10 +72,34 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="container">
+            <div class="row">
+                @if(Auth::check())
+                    <div class="col-lg-3">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href="{{route('admin.index')}}">Home</a></li>
+                            <li class="list-group-item"><a href="{{route('admin.model.index', ['model' => 'sto'])}}">Cabang</a></li>
+                            @if(Auth::user()->role->name == 'admin')
+                                <li class="list-group-item"><a href="{{route('admin.model.index', ['model' => 'user'])}}">Users</a></li>
+                                <li class="list-group-item"><a href="{{route('admin.model.form', ['model' => 'user'])}}">New User</a></li>
+                            @endif
+                            <li class="list-group-item"><a href="{{route('admin.model.index', ['model' => 'kriteria'])}}">Kriteria</a></li>
+                            <li class="list-group-item"><a href="{{route('admin.model.index', ['model' => 'berkas'])}}">Berkas</a></li>
+                            <li class="list-group-item"><a href="">All posts</a></li>
+                            <li class="list-group-item"><a href="">All trashed posts</a></li>
+                            <li class="list-group-item"><a href="">Create new category</a></li>
+                            <li class="list-group-item"><a href="">Create new post</a></li>
+                        </ul>
+                    </div>
+                @endif
+
+                @yield('content')
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('script')
 </body>
 </html>

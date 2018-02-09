@@ -21,6 +21,7 @@ class UsersTableSeeder extends Seeder
                'name' => 'Mirza Rizky',
                'email' => 'mirzarizky@gmail.com',
                'password' => bcrypt('password'),
+               'defaultPassword' => false,
                'role_id' => $peranAdmin->id,
                'created_at'=> $currentDate,
                'updated_at'=>$currentDate
@@ -30,6 +31,7 @@ class UsersTableSeeder extends Seeder
                'name' => 'Dyah Ayu',
                'email' => 'dyahanndta@gmail.com',
                'password' => bcrypt('password'),
+               'defaultPassword' => false,
                'role_id' => $peranSupervisor->id,
                'created_at'=> $currentDate,
                'updated_at'=>$currentDate

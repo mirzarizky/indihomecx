@@ -15,6 +15,7 @@ class Berkas extends Model
         'tanggalAkhirPesanan',
         'totalNoHp',
         'totalEmail',
+        'totalPesanan',
         'isSent'
     ];
 
