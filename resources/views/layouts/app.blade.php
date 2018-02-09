@@ -84,7 +84,7 @@
                                 <li class="list-group-item"><a href="{{route('admin.model.form', ['model' => 'user'])}}">New User</a></li>
                             @endif
                             <li class="list-group-item"><a href="{{route('admin.model.index', ['model' => 'kriteria'])}}">Kriteria</a></li>
-                            <li class="list-group-item"><a href="">Create Tag</a></li>
+                            <li class="list-group-item"><a href="{{route('admin.model.index', ['model' => 'berkas'])}}">Berkas</a></li>
                             <li class="list-group-item"><a href="">All posts</a></li>
                             <li class="list-group-item"><a href="">All trashed posts</a></li>
                             <li class="list-group-item"><a href="">Create new category</a></li>

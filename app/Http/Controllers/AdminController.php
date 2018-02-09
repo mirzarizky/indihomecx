@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Model\BerkasController;
 use App\Http\Controllers\Model\CabangController;
 use App\Http\Controllers\Model\KriteriaController;
 use App\Http\Controllers\Model\UserController;
@@ -36,6 +37,10 @@ class AdminController extends Controller
                 $kriteriaController = new KriteriaController();
                 return $kriteriaController->index();
                 break;
+            case 'berkas' :
+                $berkasController = new BerkasController();
+                return $berkasController->index();
+                break;
             default :
                 return redirect()->route('admin.index');
                 break;
@@ -56,6 +61,10 @@ class AdminController extends Controller
             case 'kriteria' :
                 $kriteriaController = new KriteriaController();
                 return $kriteriaController->indexForm();
+                break;
+            case 'berkas' :
+                $berkasController = new BerkasController();
+                return $berkasController->indexForm();
                 break;
             default :
                 return redirect()->back();
@@ -78,6 +87,10 @@ class AdminController extends Controller
                 $kriteriaController = new KriteriaController();
                 return $kriteriaController->create($request);
                 break;
+            case 'berkas' :
+                $berkasController = new BerkasController();
+                return $berkasController->create($request);
+                break;
             default :
                 return redirect()->back();
                 break;
@@ -98,6 +111,10 @@ class AdminController extends Controller
             case 'kriteria' :
                 $kriteriaController = new KriteriaController();
                 return $kriteriaController->updateForm($id);
+                break;
+            case 'berkas' :
+                $berkasController = new BerkasController();
+                return $berkasController->updateForm($id);
                 break;
             default :
                 return redirect()->back();
@@ -120,6 +137,10 @@ class AdminController extends Controller
                 $kriteriaController = new KriteriaController();
                 return $kriteriaController->update($request, $id);
                 break;
+            case 'berkas' :
+                $berkasController = new BerkasController();
+                return $berkasController->update($request, $id);
+                break;
             default :
                 return redirect()->back();
                 break;
@@ -140,6 +161,10 @@ class AdminController extends Controller
             case 'kriteria' :
                 $kriteriaController = new KriteriaController();
                 return $kriteriaController->delete($id);
+                break;
+            case 'berkas' :
+                $berkasController = new BerkasController();
+                return $berkasController->delete($id);
                 break;
             default :
                 return redirect()->back();

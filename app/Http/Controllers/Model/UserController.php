@@ -97,7 +97,7 @@ class UserController extends Controller
         } elseif ((Auth::user()->defaultPassword == 0) && (Auth::user()->role->name == 'supervisor')) {
             return redirect('/spv');
         }
-        return view('admin.user.first');
+        return view('first');
 
     }
 
