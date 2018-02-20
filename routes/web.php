@@ -49,9 +49,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/{model}/{id}/delete', 'AdminController@delete')->name('admin.model.delete');
 
     Route::get('berkas/{id}/download', 'Model\BerkasController@download')->name('berkas.download');
-});
+});;
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/excel', 'HomeController@excel')->name('excel');
 Route::get('/spv', function () {
     return 'halo spv';
 })->name('spv');
