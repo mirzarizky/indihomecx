@@ -15,7 +15,7 @@ class CreatePesananTable extends Migration
     {
         Schema::create('pesanan', function (Blueprint $table) {
             $table->bigInteger('id')->primary()->unsigned();
-            $table->date('tanggal');
+            $table->dateTime('tanggal');
             $table->string('namaPelanggan');
             $table->string('noHpPelanggan')->nullable();
             $table->string('emailPelanggan')->nullable();

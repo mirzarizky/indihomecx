@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Model;
 use App\Cabang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class CabangController extends Controller
 {
@@ -26,7 +27,7 @@ class CabangController extends Controller
         ]);
 
         Cabang::create([
-            'kode' => $request->kode,
+            'kode' => Str::upper($request->kode),
             'nama' => $request->nama
         ]);
 
@@ -47,7 +48,7 @@ class CabangController extends Controller
 
        Cabang::where('id', $id)
            ->update([
-               'kode' => $request->kode,
+               'kode' => Str::upper($request->kode),
                'nama' => $request->nama
            ]);
 
