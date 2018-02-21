@@ -13,6 +13,9 @@ use App\Pesanan;
 use Excel;
 use Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Bugsnag;
+
 
 class HomeController extends Controller
 {
@@ -37,9 +40,10 @@ class HomeController extends Controller
             return view('home', compact('rolename'));
     }
 
-    public function excel()
+    public function excel($id)
     {
-        CreatePesananFromBerkas::dispatch(1);
+//        Bugsnag::notifyError('ErrorType', 'Test Error');
+        CreatePesananFromBerkas::dispatch($id);
 //        $file = Berkas::findOrFail(1);
 //        $path = 'storage/app/'.$file->path;
 //        $skip = 0;
@@ -84,5 +88,11 @@ class HomeController extends Controller
 //        }
 
         return redirect()->route('admin.model.index', ['model'=>'berkas'])->with(['status'=>'Berkas sedang diproses']);
+    }
+
+    public function logs()
+    {
+
+        return Storage::download();
     }
 }

@@ -52,7 +52,7 @@ Route::prefix('admin')->group(function () {
 });;
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/excel', 'HomeController@excel')->name('excel');
+Route::get('/excel/{id}', 'HomeController@excel')->name('excel');
 Route::get('/spv', function () {
     return 'halo spv';
 })->name('spv');
