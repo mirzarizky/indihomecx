@@ -42,7 +42,7 @@ class StorePesanan implements ShouldQueue
     {
         Log::info("Menambahkan Order dari berkas ".$this->idBerkas.". Dari kolom ".$this->skipRows." Sampai ".($t = $this->skipRows + 500));
         $file = $berkas->findOrFail($this->idBerkas);
-        $path = 'storage/app/'.$file->path;
+        $path = 'storage/app/public/'.$file->path;
         $skip = $this->skipRows;
 
         $excel = Excel::selectSheetsByIndex(0)->load($path, function($reader) use($skip)

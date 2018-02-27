@@ -29,16 +29,21 @@ class BerkasController extends Controller
 
         $request->validate([
             'daterange' => 'required',
-            'berkas' => 'required|file'
+            'berkas' => 'required|file|mimes:xlsx'
         ]);
 
         $file = $request->file('berkas');
-        $fileName = $file->getClientOriginalName();
-        $path = $file->storeAs('public/berkas', $fileName);
 
         list ($start, $end) = explode('-', $request->daterange);
         $startDate = str_replace("/","-",$start);
         $endDate = str_replace("/","-", $end);
+
+        $fileName = date('Ymd-His')."_DATA_".date('jM', strtotime($startDate))."-".date('jM', strtotime($endDate)).".xlsx";
+        //$path = $file->storeAs('public/berkas', $fileName);
+        $path = Storage::disk('public')->putFileAs('berkas', $file, $fileName);
+        if (!empty(env('DROPBOX_TOKEN'))){
+            Storage::disk('dropbox')->putFileAs('berkas', $file, $fileName);
+        }
 
         Berkas::create([
             'nama' => $fileName,
@@ -82,7 +87,7 @@ class BerkasController extends Controller
     public function delete($id)
     {
         $berkas = Berkas::findOrFail($id);
-        Storage::delete($berkas->path);
+        Storage::disk('public')->delete($berkas->path);
 //        $berkas->delete();
 
         return redirect()
@@ -93,6 +98,7 @@ class BerkasController extends Controller
     public function download($id)
     {
         $berkas = Berkas::findOrFail($id);
-        return Storage::download($berkas->path, $berkas->nama);
+        $url=Storage::disk('public')->temporaryUrl($berkas->path, now()->addMinutes(1));
+        return dd($url);
     }
 }

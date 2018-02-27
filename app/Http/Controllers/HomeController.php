@@ -42,10 +42,10 @@ class HomeController extends Controller
 
     public function excel($id)
     {
-//        Bugsnag::notifyError('ErrorType', 'Test Error');
         CreatePesananFromBerkas::dispatch($id);
-//        $file = Berkas::findOrFail(1);
-//        $path = 'storage/app/'.$file->path;
+
+//        $file = Berkas::findOrFail($id);
+//        $path = 'storage/'.$file->path;
 //        $skip = 0;
 //        $excel = Excel::selectSheetsByIndex(0)->load($path, function($reader) use($skip)
 //        {
@@ -90,9 +90,10 @@ class HomeController extends Controller
         return redirect()->route('admin.model.index', ['model'=>'berkas'])->with(['status'=>'Berkas sedang diproses']);
     }
 
-    public function logs()
+    public function download($id)
     {
 
-        return Storage::download();
+        $file = Berkas::findOrFail($id);
+        return Storage::download($file->path);
     }
 }

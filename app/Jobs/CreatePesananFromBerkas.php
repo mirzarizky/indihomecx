@@ -37,7 +37,7 @@ class CreatePesananFromBerkas implements ShouldQueue
     {
         Log::info("Create Pesanan dari berkas ".$this->idBerkas." dimulai");
         $berkas = Berkas::findOrFail($this->idBerkas);
-        $path = 'storage/app/'.$berkas->path;
+        $path = 'storage/app/public/'.$berkas->path;
 
         $excel = Excel::selectSheetsByIndex(0)->load($path, function($reader)
         {
