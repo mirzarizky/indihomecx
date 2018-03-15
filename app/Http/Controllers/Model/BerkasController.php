@@ -57,7 +57,7 @@ class BerkasController extends Controller
     }
 
     public function updateForm($id) {
-        $berkas = Berkas::FindOrFail($id);
+        $berkas = Berkas::findOrFail($id);
 
         return view('admin.berkas.updateform', compact('berkas'));
     }

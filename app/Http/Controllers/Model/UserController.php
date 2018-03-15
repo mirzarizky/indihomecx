@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Model;
 
+use App\Avatar;
 use App\Http\Controllers\Controller;
 use App\Mail\NewUserMail;
 use App\Role;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -23,9 +26,85 @@ class UserController extends Controller
         return view('admin.user.index', compact('users'));
     }
 
+    public function indexMe() {
+        $user = User::FindOrFail(Auth::user()->id);
+        return view('profile.index', compact('user'));
+    }
+
+    public function indexEdit() {
+        $user = User::FindOrFail(Auth::user()->id);
+        return view('profile.update', compact('user'));
+    }
+
+    public function indexUpdatePassword() {
+        return view('profile.password');
+    }
+
+    public function updateProfilePassword(Request $request) {
+        $request->validate([
+            'oldPassword' => 'required|string|min:6'
+        ]);
+        $user = User::FindOrFail(Auth::user()->id);
+        if (Hash::check($request->oldPassword, $user->password))
+        {
+            return $this->updatePassword($request);
+        } else {
+            return redirect()->back()->withErrors(['oldPassword'=> 'Hahaha Salah nih!']);
+        }
+    }
+
     public function indexForm() {
         $roles = Role::all();
         return view('admin.user.form', compact('roles'));
+    }
+
+    public function updateMe(Request $request) {
+        $request->validate([
+            'photo' => 'file|nullable|mimes:jpeg,jpg,png|max:2048',
+            'nama' => 'required|string|max:255',
+            'noHp' => 'string|nullable',
+            'email' => 'required|string|email|max:255|'
+        ]);
+        $user = User::FindOrFail(Auth::user()->id);
+        if(!empty($request->photo)) {
+            if (!empty($user->avatar_id)){
+                $avatar = Avatar::findOrFail($user->avatar_id);
+                Storage::disk('public')->delete($user->avatar->path);
+                $path = $request->file('photo')->store('avatars', 'public');
+                $extension = pathinfo($path);
+
+                $updatedAvatar = Avatar::where('id', $avatar->id)
+                    ->update([
+                        'name' => date('Ymd-His').'_'.$user->id.'.'.$extension['extension'],
+                        'path' => $path
+                    ]);
+                User::where('id', $user->id)
+                    ->update([
+                        'name' => $request->nama,
+                        'noHp' => $request->noHp,
+                        'email' => $request->email,
+                        'avatar_id' => $updatedAvatar->id
+                    ]);
+            } elseif(empty($user->avatar_id)){
+                $path = $request->file('photo')->store('avatars', 'public');
+                $extension = pathinfo($path);
+                $newAvatar = Avatar::create([
+                    'name' => date('Ymd-His').'_'.$user->id.'.'.$extension['extension'],
+                    'path' => $path,
+                ]);
+                User::where('id', $user->id)
+                    ->update([
+                       'name' => $request->nama,
+                       'noHp' => $request->noHp,
+                       'email' => $request->email,
+                       'avatar_id' => $newAvatar->id
+                    ]);
+            }
+        } elseif (($user->name == $request->nama) && ($user->email == $request->email) && ($user->noHp == $request->noHp)) {
+            return redirect()->back()->with(['status' => 'Anda tidak mengubah apapun']);
+        }
+
+        return redirect()->route('profile.index')->with(['status' => 'Profil berhasil diperbaharui.']);
     }
 
     public function create(Request $request) {
@@ -107,7 +186,7 @@ class UserController extends Controller
             'password' => 'required|string|min:6|confirmed'
         ]);
 
-        $currentUser = (Auth::user());
+        $currentUser = Auth::user();
 
         User::where('id', $currentUser->id)
             ->update([
@@ -115,6 +194,6 @@ class UserController extends Controller
                 'defaultPassword' => false
             ]);
 
-        return redirect()->route('admin.index');
+        return redirect()->route('profile.index');
     }
 }

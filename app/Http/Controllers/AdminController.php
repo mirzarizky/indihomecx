@@ -6,16 +6,17 @@ use App\Http\Controllers\Model\BerkasController;
 use App\Http\Controllers\Model\CabangController;
 use App\Http\Controllers\Model\KriteriaController;
 use App\Http\Controllers\Model\UserController;
+use App\Http\Controllers\Model\PesananController;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('isAdmin');
-        $this->middleware('isDefaultPassword');
-    }
+{
+    $this->middleware('auth');
+    $this->middleware('isAdmin');
+    $this->middleware('isDefaultPassword');
+}
 
     public function indexAdmin()
     {
@@ -40,6 +41,10 @@ class AdminController extends Controller
             case 'berkas' :
                 $berkasController = new BerkasController();
                 return $berkasController->index();
+                break;
+            case 'order' :
+                $pesananController = new PesananController();
+                return $pesananController->index();
                 break;
             default :
                 return redirect()->route('admin.index');
