@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->integer('nik');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('noHp',14)->nullable();
             $table->string('password');
             $table->boolean('defaultPassword')->default(true);
             $table->rememberToken();

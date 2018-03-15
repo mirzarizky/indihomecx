@@ -56,7 +56,7 @@ class LoginController extends Controller
             return redirect()->route('admin.index');
         }
         elseif ($user->role->name == 'supervisor') {
-            return redirect()->route('spv');
+            return redirect()->route('spv.index');
         } else {
             return redirect()->back();
         }

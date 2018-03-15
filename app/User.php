@@ -16,7 +16,7 @@ class User extends Authenticatable
     ];
 
     protected $fillable = [
-        'nik', 'name', 'email', 'password', 'defaulPassword', 'role_id'
+        'nik', 'name', 'email', 'noHp', 'password', 'defaulPassword', 'avatar_id', 'role_id'
     ];
 
     protected $hidden = [
@@ -25,5 +25,9 @@ class User extends Authenticatable
 
     public function role() {
         return $this->hasOne('App\Role', 'id', 'role_id');
+    }
+
+    public function avatar() {
+        return $this->hasOne('App\Avatar', 'id', 'avatar_id');
     }
 }

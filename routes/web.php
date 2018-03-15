@@ -15,29 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/hasone', function () {
-    $user = \App\User::first();
-    return $user->role->name;
-});
-
-Route::get('/hasmany', function () {
-    $role = \App\Role::first();
-    return $role->user;
-});
-
-
-Route::get('/cabang', function () {
-    $cabangs = \App\Cabang::where('kode', 'cne')->first();
-    return $cabangs->pesanan;
-})->name('cabang');
-
-
-Auth::routes();
-
+//Auth::routes();
+Route::get('signin', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('signin', 'Auth\LoginController@login')->name('login.post');
+Route::post('signout', 'Auth\LoginController@logout')->name('logout');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
 Route::get('/first', 'Model\UserController@firstLogin')->name('user.first');
 Route::post('/first', 'Model\UserController@updatePassword')->name('user.updatePassword');
-
 
 Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminController@indexAdmin')->name('admin.index');
@@ -50,11 +38,20 @@ Route::prefix('admin')->group(function () {
 
     Route::get('berkas/{id}/download', 'Model\BerkasController@download')->name('berkas.download');
 });;
+Route::prefix('spv')->group(function () {
+    Route::get('/', 'SpvController@indexSpv')->name('spv.index');
+});;
+
+Route::prefix('profile')->group(function () {
+    Route::get('/', 'Model\UserController@indexMe')->name('profile.index');
+    Route::get('/edit', 'Model\UserController@indexEdit')->name('profile.edit');
+    Route::get('/password', 'Model\UserController@indexUpdatePassword')->name('profile.password');
+    Route::post('/password', 'Model\UserController@updateProfilePassword')->name('profile.password.update');
+    Route::post('/update', 'Model\UserController@updateMe')->name('profile.update');
+});;
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/excel/{id}', 'HomeController@excel')->name('excel');
 Route::get('/donlot/{id}', 'HomeController@download')->name('donlot');
-Route::get('/spv', function () {
-    return 'halo spv';
-})->name('spv');
+
 
