@@ -73,7 +73,7 @@ class UserController extends Controller
                 $path = $request->file('photo')->store('avatars', 'public');
                 $extension = pathinfo($path);
 
-                $updatedAvatar = Avatar::where('id', $avatar->id)
+                Avatar::where('id', $avatar->id)
                     ->update([
                         'name' => date('Ymd-His').'_'.$user->id.'.'.$extension['extension'],
                         'path' => $path
@@ -83,7 +83,7 @@ class UserController extends Controller
                         'name' => $request->nama,
                         'noHp' => $request->noHp,
                         'email' => $request->email,
-                        'avatar_id' => $updatedAvatar->id
+                        'avatar_id' => $avatar->id
                     ]);
             } elseif(empty($user->avatar_id)){
                 $path = $request->file('photo')->store('avatars', 'public');
@@ -102,6 +102,13 @@ class UserController extends Controller
             }
         } elseif (($user->name == $request->nama) && ($user->email == $request->email) && ($user->noHp == $request->noHp)) {
             return redirect()->back()->with(['status' => 'Anda tidak mengubah apapun']);
+        } else {
+            User::where('id', $user->id)
+                ->update([
+                    'name' => $request->nama,
+                    'noHp' => $request->noHp,
+                    'email' => $request->email
+                ]);
         }
 
         return redirect()->route('profile.index')->with(['status' => 'Profil berhasil diperbaharui.']);
