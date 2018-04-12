@@ -8,7 +8,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Login I-CX</title>
+  <title>Login</title>
+
 
   <!-- Bootstrap -->
   <link href="{{asset('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
@@ -46,9 +47,11 @@
         <section class="login_content">
           <form class="form-horizontal" method="POST" action="{{ route('login.post') }}">
             {{ csrf_field() }}
-            <h1>Login Form</h1>
+            
+            <h1>Silakan Login</h1>
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-              <input id="email" name="email" type="text" class="form-control" placeholder="NIK" value="{{ old('email') }}" required autofocus> @if ($errors->has('email'))
+              <input id="email" name="email" type="text" class="form-control" placeholder="NIK / E-mail" value="{{ old('email') }}" required autofocus> @if ($errors->has('email'))
+
               <span class="help-block">
                         <strong>{{ $errors->first('email') }}</strong>
                     </span> @endif
