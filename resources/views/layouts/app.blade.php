@@ -13,7 +13,7 @@
   <title>@yield('title')</title>
 
   <!-- Bootstrap -->
-  <link href="{{asset('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{asset('css/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <!-- NProgress -->
   <link href="{{asset('css/nprogress/nprogress.css')}}" rel="stylesheet">
   <!-- Font Awesome -->
@@ -90,6 +90,7 @@
 
             <ul class="nav navbar-nav navbar-right">
               <li class="">
+
                 <a href="javascript:" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                   <img src="@if(!is_null(Auth::user()->avatar_id)) {{asset('storage/'.''.Auth::user()->avatar->path)}} @else {{ asset('images/user.png') }} @endif" alt="">
                   {{ Auth::user()->name }}
