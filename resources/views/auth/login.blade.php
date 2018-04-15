@@ -10,11 +10,10 @@
 
   <title>Login</title>
 
-
   <!-- Bootstrap -->
   <link href="{{asset('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
   <!-- NProgress -->
-  <link href="{{asset('js/nprogress/nprogress.css')}}" rel="stylesheet">
+  <link href="{{asset('css/nprogress/nprogress.css')}}" rel="stylesheet">
   <!-- Custom Theme Style -->
   <link href="{{asset('css/custom.css')}}" rel="stylesheet">
   <style media="screen">
@@ -39,7 +38,6 @@
     }
   </style>
 </head>
-
 <body class="login">
   <div>
     <div class="login_wrapper">
@@ -51,7 +49,6 @@
             <h1>Silakan Login</h1>
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
               <input id="email" name="email" type="text" class="form-control" placeholder="NIK / E-mail" value="{{ old('email') }}" required autofocus> @if ($errors->has('email'))
-
               <span class="help-block">
                         <strong>{{ $errors->first('email') }}</strong>
                     </span> @endif
@@ -82,7 +79,6 @@
 
             <div class="clearfix"></div>
             <br />
-
             <div>
               <center>
                 <img class="logo" src="images/indihome.png" style="width:60%; padding-bottom:20px;" />

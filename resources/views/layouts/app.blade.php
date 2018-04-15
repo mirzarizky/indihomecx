@@ -1,105 +1,134 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>@yield('title')</title>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @yield('style')
+  <!-- Bootstrap -->
+  <link href="{{asset('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="{{asset('css/nprogress/nprogress.css')}}" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="{{asset('css/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  <!-- Styles -->
+  <link href="{{ asset('css/custom.css') }}" rel="stylesheet"> @yield('style')
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+<body class="nav-md">
+  <div class="container body">
+    @if(Auth::check())
+    <div class="main_container">
+      <div class="col-md-3 left_col menu_fixed">
+        <div class="left_col scroll-view">
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="{{route('admin.index')}}" class="site_title border-bottom"> <img src="{{asset('images/logoindi.png')}}" style="margin-bottom:6%;"> <span>{{ config('app.name') }}</span></a>
+          </div>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
+          <div class="clearfix"></div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            {{--<li><a href="{{ route('register') }}">Register</a></li>--}}
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{route('profile.index')}}">
-                                            Profile
-                                        </a>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+          <!-- menu profile quick info -->
+          <div class="profile clearfix">
+            <div class="profile_pic">
+              <img src="{{asset('images/img_adm.jpg')}}" alt="..." class="img-circle profile_img">
             </div>
-        </nav>
+            <div class="profile_info">
+              <span>Welcome,</span>
+              <h2>{{ Auth::user()->name }}</h2>
+            </div>
+          </div>
+          <!-- /menu profile quick info -->
 
-        <div class="container">
-            <div class="row">
-                @if(Auth::check())
-                    <div class="col-lg-3">
-                        <ul class="list-group">
-                            <li class="list-group-item"><a href="{{route('admin.index')}}">Home</a></li>
-                            <li class="list-group-item"><a href="{{route('admin.model.index', ['model' => 'sto'])}}">Cabang</a></li>
-                            @if(Auth::user()->role->name == 'admin')
-                                <li class="list-group-item"><a href="{{route('admin.model.index', ['model' => 'user'])}}">Users</a></li>
-                                <li class="list-group-item"><a href="{{route('admin.model.form', ['model' => 'user'])}}">New User</a></li>
-                            @endif
-                            <li class="list-group-item"><a href="{{route('admin.model.index', ['model' => 'kriteria'])}}">Kriteria</a></li>
-                            <li class="list-group-item"><a href="{{route('admin.model.index', ['model' => 'berkas'])}}">Berkas</a></li>
-                            <li class="list-group-item"><a href="{{route('admin.model.index', ['model' => 'order'])}}">Order</a></li>
-                        </ul>
-                    </div>
+          <br />
+
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+            <div class="menu_section">
+              <ul class="nav side-menu">
+                <li><a href="{{route('admin.index')}}"><i class="fa fa-home"></i> Dashboard</a>
+                </li>
+                @if(Auth::user()->role->name == 'admin')
+                <li><a href="{{route('admin.model.index', ['model' => 'user'])}}"><i class="fa fa-users"></i> Users</a>
+                </li>
+                <li><a href="{{route('admin.model.index', ['model' => 'order'])}}"><i class="fa fa-check-square-o"></i> Order</a>
+                </li>
+                <li><a href="{{route('admin.model.index', ['model' => 'berkas'])}}"><i class="fa fa-file-excel-o"></i> Berkas</a>
+                </li>
+                <li><a href="{{route('admin.model.index', ['model' => 'sto'])}}"><i class="fa fa-university"></i> Cabang</a>
+                </li>
+                <li><a><i class="fa fa-pencil-square-o"></i> Survei <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="survei_adm.html">Lihat Form Survei</a></li>
+                    <li><a href="faktor_kepuasan_adm.html">Edit Survei</a></li>
+                  </ul>
+                </li>
+                @else
+                <li><a href="survei_spv.html"><i class="fa fa-pencil-square-o"></i> Lihat Form Survei</a>
+                </li>
                 @endif
-
-                @yield('content')
+              </ul>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
+      @endif
+      <!-- top navigation -->
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars" style="color:#23272b;"></i></a>
+            </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    @yield('script')
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="tru">
+                  <img src="images/img_adm.jpg" alt="">
+                  {{ Auth::user()->name }}
+                  <span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="{{route('profile.index')}}"> Profile</a></li>
+                  <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                </ul>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+                </form>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- /top navigation -->
+
+      @yield('content')
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <!-- footer content -->
+  <footer>
+    <div class="pull-right">
+      Indihome Customer Experience
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  <!-- /footer content -->
+
+
+  <!-- Scripts -->
+  <script src="{{ asset('js/jquery.min.js') }}"></script>
+  <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('js/nprogress/nprogress.js') }}"></script>
+  <script src="{{ asset('js/custom.js')}}"></script>
+  @yield('script')
 </body>
 </html>

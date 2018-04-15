@@ -1,19 +1,65 @@
 @extends('layouts.app')
-
+@section('title', 'Dashboard')
 @section('content')
-    <div class="col-lg-9">
-        <div class="panel panel-default">
-            <div class="panel-heading">Dashboard</div>
-
-            <div class="panel-body">
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
-                You are logged in!
-            </div>
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="">
+    <div class="row top_tiles">
+      <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="tile-stats">
+          <div class="icon"><i class="fa fa-users" style="color:#F44336;"></i></div>
+          <div class="count">8</div>
+          <h3>Users</h3>
+          <p>Jumlah <i>user</i> yang telah terdaftar.</p>
         </div>
+      </div>
+      <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="tile-stats">
+          <div class="icon"><i class="fa fa-share" style="color:#F44336;"></i></div>
+          <div class="count">179</div>
+          <h3>Survei Dikirim</h3>
+          <p>Jumlah link survei yang sudah dikirimkan ke pelanggan.</p>
+        </div>
+      </div>
+      <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="tile-stats">
+          <div class="icon"><i class="fa fa-comments-o" style="color:#F44336;"></i></div>
+          <div class="count">179</div>
+          <h3>Survei Terisi</h3>
+          <p>Survei yang sudah berhasil diisi oleh pelanggan.</p>
+        </div>
+      </div>
     </div>
+    <div class="row top_tiles">
+      <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="tile-stats">
+          <div class="icon"><i class="fa fa-check-square-o" style="color:#F44336;"></i></div>
+          <div class="count">986</div>
+          <h3><i>Work Order</i></h3>
+          <p>Jumlah <i>work order</i> yang keluar minggu ini</p>
+        </div>
+      </div>
+      <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="tile-stats">
+          <div class="icon"><i class="fa fa-university" style="color:#F44336;"></i></div>
+          <div class="count">5</div>
+          <h3>STO</h3>
+          <p>STO yang terintergrasi dengan Indihome-CX saat ini</p>
+        </div>
+      </div>
+      <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="tile-stats">
+          <div class="icon"><i class="fa fa-file-excel-o" style="color:#F44336;"></i></div>
+          <div class="count">656</div>
+          <h3>Berkas</h3>
+          <p>Jumlah berkas yang sudah diupload ke database.</p>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<!-- /page content -->
+</div>
+<br />
+</div>
 @endsection
