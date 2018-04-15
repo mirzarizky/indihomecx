@@ -33,7 +33,9 @@ class AppServiceProvider extends ServiceProvider
         if(env('REDIRECT_HTTPS')) {
             $this->app['request']->server->set('HTTPS', true); //for heroku deployment
         }
-        $this->app->alias('bugsnag.logger', \Illuminate\Contracts\Logging\Log::class);
-        $this->app->alias('bugsnag.logger', \Psr\Log\LoggerInterface::class);
+        if(!empty(env('BUGSNAG_API_KEY'))) {
+            $this->app->alias('bugsnag.logger', \Illuminate\Contracts\Logging\Log::class);
+            $this->app->alias('bugsnag.logger', \Psr\Log\LoggerInterface::class);
+        }
     }
 }

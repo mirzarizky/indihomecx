@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('signin', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('signin', 'Auth\LoginController@login')->name('login.post');
 Route::post('signout', 'Auth\LoginController@logout')->name('logout');
+Route::get('signout', 'Auth\LoginController@logout')->name('logout.get');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
