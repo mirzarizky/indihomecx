@@ -38,7 +38,6 @@
     }
   </style>
 </head>
-
 <body class="login">
   <div>
     <div class="login_wrapper">
@@ -46,6 +45,7 @@
         <section class="login_content">
           <form class="form-horizontal" method="POST" action="{{ route('login.post') }}">
             {{ csrf_field() }}
+            
             <h1>Silakan Login</h1>
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
               <input id="email" name="email" type="text" class="form-control" placeholder="NIK / E-mail" value="{{ old('email') }}" required autofocus> @if ($errors->has('email'))
@@ -79,7 +79,6 @@
 
             <div class="clearfix"></div>
             <br />
-
             <div>
               <center>
                 <img class="logo" src="images/indihome.png" style="width:60%; padding-bottom:20px;" />
