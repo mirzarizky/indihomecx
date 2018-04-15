@@ -4,9 +4,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
-
-  <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.css')}}">
+  	<link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.css')}}">
 	<link rel="stylesheet" href="{{asset('css/animate.css')}}">
+    <title>Indihome Customer Experience</title>
 	<style media="screen">
 		body {
 			font-family: "Work Sans", Arial, sans-serif;
@@ -41,8 +41,6 @@
 			font-size: 14px;
 			width: 600px;
 		}
-
-
 	</style>
 </head>
 
