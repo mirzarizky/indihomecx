@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Berkas;
+use App\Cabang;
 use App\Http\Controllers\Model\BerkasController;
 use App\Http\Controllers\Model\CabangController;
 use App\Http\Controllers\Model\KriteriaController;
 use App\Http\Controllers\Model\UserController;
 use App\Http\Controllers\Model\PesananController;
+use App\Pesanan;
+use App\Survei;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -20,7 +26,19 @@ class AdminController extends Controller
 
     public function indexAdmin()
     {
-        return view('admin.index');
+        $totalUsers = User::all()->count();
+        $totalCabang = Cabang::all()->count();
+        $totalSurvei = Survei::all()->count();
+        $totalBerkas = Berkas::all()->count();
+        $totalOrderThisWeek = Pesanan::whereBetween('tanggal', [Carbon::now()->startOfWeek(),Carbon::now()->endOfWeek()])->count();
+        $count = array(
+            'users' => $totalUsers,
+            'cabang' => $totalCabang,
+            'orders' => $totalOrderThisWeek,
+            'survei' => $totalSurvei,
+            'berkas' => $totalBerkas
+        );
+        return view('admin.index', compact('count'));
     }
 
     public function index($model)

@@ -90,7 +90,8 @@
 
             <ul class="nav navbar-nav navbar-right">
               <li class="">
-                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="tru">
+
+                <a href="javascript:" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                   <img src="@if(!is_null(Auth::user()->avatar_id)) {{asset('storage/'.''.Auth::user()->avatar->path)}} @else {{ asset('images/user.png') }} @endif" alt="">
                   {{ Auth::user()->name }}
                   <span class=" fa fa-angle-down"></span>
