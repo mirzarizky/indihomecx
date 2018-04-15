@@ -13,7 +13,7 @@
   <!-- Bootstrap -->
   <link href="{{asset('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
   <!-- NProgress -->
-  <link href="{{asset('js/nprogress/nprogress.css')}}" rel="stylesheet">
+  <link href="{{asset('css/nprogress/nprogress.css')}}" rel="stylesheet">
   <!-- Custom Theme Style -->
   <link href="{{asset('css/custom.css')}}" rel="stylesheet">
   <style media="screen">
