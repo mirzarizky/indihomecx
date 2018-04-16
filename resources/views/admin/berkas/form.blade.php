@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Berkas')
+@section('title', 'Tambah Berkas')
 @section('style')
 <link href="{{asset('css/daterangepicker/daterangepicker.css')}}" rel="stylesheet">
 @endsection
@@ -42,7 +42,7 @@
                     <div class="form-group {{ !$errors->has('berkas') ?: 'has-error' }}">
                       <label for="berkas" class="col-lg-3 control-label">Berkas:</label>
                       <label class="btn btn-default btn-file" style="margin-left:10px"> Pilih Berkas untuk di Upload<br />
-                        <input id="berkas" type="file" class="btn btn-default btn-file" name="berkas"/>
+                        <input id="berkas" type="file" class="btn btn-default btn-file" name="berkas" accept=".xlsx, .xls"/>
                       </label>
                       <label style="font-size:10px;">*.xls,.xlsx</label>
                         @if ($errors->has('berkas'))

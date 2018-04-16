@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Berkas')
+@section('title', 'Berkas Tersimpan')
 @section('style')
 <link href="{{asset('css/datatables/dataTables.bootstrap.min.css')}}" rel="stylesheet">
 <link href="{{asset('css/datatables/responsive.bootstrap.min.css')}}" rel="stylesheet">
@@ -99,15 +99,6 @@
       }
       console.log('init_DataTables');
 
-      TableManageButtons = function() {
-        "use strict";
-        return {
-          init: function() {
-            handleDataTableButtons();
-          }
-        };
-      }();
-
       $('#datatable').dataTable();
 
       $('#datatable-keytable').DataTable({
@@ -144,9 +135,6 @@
           checkboxClass: 'icheckbox_flat-green'
         });
       });
-
-      TableManageButtons.init();
-
     };
 
     // swal Hapus

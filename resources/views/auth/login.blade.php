@@ -11,7 +11,7 @@
   <title>Login</title>
 
   <!-- Bootstrap -->
-  <link href="{{asset('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{asset('css/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <!-- NProgress -->
   <link href="{{asset('css/nprogress/nprogress.css')}}" rel="stylesheet">
   <!-- Custom Theme Style -->
@@ -45,7 +45,7 @@
         <section class="login_content">
           <form class="form-horizontal" method="POST" action="{{ route('login.post') }}">
             {{ csrf_field() }}
-            
+
             <h1>Silakan Login</h1>
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
               <input id="email" name="email" type="text" class="form-control" placeholder="NIK / E-mail" value="{{ old('email') }}" required autofocus> @if ($errors->has('email'))
@@ -83,7 +83,7 @@
               <center>
                 <img class="logo" src="images/indihome.png" style="width:60%; padding-bottom:20px;" />
               </center>
-              <p>©2018 All Rights Reserved.</p>
+              <p>Telkom Indonesia</p>
             </div>
           </div>
         </section>
