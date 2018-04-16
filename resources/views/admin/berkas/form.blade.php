@@ -1,77 +1,105 @@
 @extends('layouts.app')
-
+@section('title', 'Berkas')
 @section('style')
-    {{--<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />--}}
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-    {{--<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/3/daterangepicker.css" />--}}
+<link href="{{asset('css/daterangepicker/daterangepicker.css')}}" rel="stylesheet">
 @endsection
-
 @section('content')
-    <div class="col-lg-9">
-        <div class="panel panel-default">
-            <div class="panel-heading">Tambah Berkas</div>
-
-            <div class="panel-body">
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
-                    <form class="form-horizontal" method="POST" action="{{ route('admin.model.create', ['model' => 'berkas']) }}" enctype="multipart/form-data">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('daterange') ? ' has-error' : '' }}">
-                            <label for="daterange" class="col-md-4 control-label">Range Tanggal</label>
-
-                            <div class="col-md-6">
-                                <input type="text" id="daterange" name="daterange" class="form-control daterange">
-
-                                @if ($errors->has('daterange'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('daterange') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group {{ !$errors->has('berkas') ?: 'has-error' }}">
-                            <label for="berkas" class="col-md-4 control-label">Berkas</label>
-
-                            <div class="col-md-6">
-                                <input id="berkas" type="file" class="" name="berkas">
-
-                                @if ($errors->has('berkas'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('berkas') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Tambah
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+<div class="right_col" role="main">
+  <div class="">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h3>Tambah Berkas</h3>
+            <div class="clearfix"></div>
+              @if (session('status'))
+                <div class="alert alert-success">
+                  {{ session('status') }}
+                </div>
+              @endif
             </div>
-        </div>
-    </div>
-@endsection
+            <div class="x_content">
+              <div class="container">
+                <div class="row">
+                  <form class="form-horizontal" method="POST" action="{{ route('admin.model.create', ['model' => 'berkas']) }}" enctype="multipart/form-data">
+                    {{ csrf_field() }}
 
+                    <div class="form-group{{ $errors->has('daterange') ? ' has-error' : '' }}">
+                    <label for="daterange" class="col-lg-3 control-label">Tanggal:</label>
+                    <div class="col-lg-6">
+                      <div class="input-prepend input-group">
+                        <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                        <input type="text" id="daterange" name="daterange" class="form-control daterange">
+                      </div>
+                      @if ($errors->has('daterange'))
+                      <span class="help-block">
+                        <strong>{{ $errors->first('daterange') }}</strong>
+                      </span>
+                      @endif
+                    </div>
+                    </div>
+
+                    <div class="form-group {{ !$errors->has('berkas') ?: 'has-error' }}">
+                      <label for="berkas" class="col-lg-3 control-label">Berkas:</label>
+                      <label class="btn btn-default btn-file" style="margin-left:10px"> Pilih Berkas untuk di Upload<br />
+                        <input id="berkas" type="file" class="btn btn-default btn-file" name="berkas"/>
+                      </label>
+                      <label style="font-size:10px;">*.xls,.xlsx</label>
+                        @if ($errors->has('berkas'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('berkas') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-lg-3 control-label" style="margin-left:10px"></label>
+                      <output id="filesInfo"></output>
+                    </div>
+
+                    <center>
+                      <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-6">
+                          <button type="submit" class="btn btn-danger ftco-animate">Tambah Berkas
+                            <span></span>
+                          <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate">Batal
+                        </div>
+                      </div>
+                    </center>
+                   </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<br />
+
+@endsection
 @section('script')
-    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-    <script type="text/javascript">
-        $('input[name="daterange"]').daterangepicker({
-            locale: {
-                format: 'YYYY/MM/DD'
-            },
-        });
-    </script>
+<script src="{{ asset('js/moment/min/moment.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+<script type="text/javascript">
+//daterangepicker
+$('input[name="daterange"]').daterangepicker({
+  locale: {
+    format: 'YYYY/MM/DD'
+  },
+});
+
+//namafile
+function fileSelect(evt) {
+  var files = evt.target.files;
+  var result = '';
+  var file;
+  for (var i = 0; file = files[i]; i++) {
+    result += file.name;
+  }
+  document.getElementById('filesInfo').innerHTML = result;
+}
+document.getElementById('berkas').addEventListener('change', fileSelect, false);
+</script>
 @endsection

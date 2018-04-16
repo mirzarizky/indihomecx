@@ -3,7 +3,6 @@
 @section('style')
 <link href="{{asset('css/datatables/dataTables.bootstrap.min.css')}}" rel="stylesheet">
 <link href="{{asset('css/datatables/responsive.bootstrap.min.css')}}" rel="stylesheet">
-<link href="{{asset('css/daterangepicker/daterangepicker.css')}}" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{{asset('css/sweetalert/sweetalert.min.css')}}">
 @endsection
 
@@ -83,6 +82,7 @@
     </div>
   </div>
 </div>
+<br />
 @endsection
 @section('script')
 <script src="{{ asset('js/datatables/jquery.dataTables.min.js') }}"></script>
