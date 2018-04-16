@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Berkas Tersimpan')
+@section('title', 'Daftar User')
 @section('style')
 <link href="{{asset('css/datatables/dataTables.bootstrap.min.css')}}" rel="stylesheet">
 <link href="{{asset('css/datatables/responsive.bootstrap.min.css')}}" rel="stylesheet">
