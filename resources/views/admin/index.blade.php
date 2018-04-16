@@ -61,5 +61,4 @@
 <!-- /page content -->
 </div>
 <br />
-</div>
 @endsection

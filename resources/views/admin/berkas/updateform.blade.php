@@ -1,77 +1,130 @@
 @extends('layouts.app')
-
+@section('title', 'Ubah Berkas')
 @section('style')
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<link href="{{asset('css/daterangepicker/daterangepicker.css')}}" rel="stylesheet">
 @endsection
 
 @section('content')
-    <div class="col-lg-9">
-        <div class="panel panel-default">
-            <div class="panel-heading">Ubah Berkas</div>
+<div class="right_col" role="main">
+  <div class="">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h3>Ubah Berkas</h3>
+            <div class="clearfix"></div>
 
-            <div class="panel-body">
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
+              @if (session('status'))
+                <div class="alert alert-success">
+                  {{ session('status') }}
+                </div>
+              @endif
 
-                    <form class="form-horizontal" method="POST" action="{{route('admin.model.update', ['model' => 'berkas', 'id' => $berkas->id])}}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
-                            <label for="nama" class="col-md-4 control-label">Nama Berkas</label>
-
-                            <div class="col-md-6">
-                                <input id="nama" type="text" class="form-control" name="nama" value="{{ $berkas->nama }}" required>
-
-                                @if ($errors->has('nama'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('nama') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('daterange') ? ' has-error' : '' }}">
-                            <label for="daterange" class="col-md-4 control-label">Range Tanggal</label>
-
-                            <div class="col-md-6">
-                                <input type="text" id="daterange" name="daterange" class="form-control daterange">
-
-                                @if ($errors->has('daterange'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('daterange') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Simpan
-                                </button>
-                            </div>
-                        </div>
-                    </form>
             </div>
+            <div class="x_content">
+              <div class="container">
+                <div class="row">
+                  <form id="form-valid" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="{{route('admin.model.update', ['model' => 'berkas', 'id' => $berkas->id])}}">
+                    {{ csrf_field() }}
+
+                    <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
+                      <label for="nama" class="col-lg-3 control-label">Nama Berkas:</label>
+
+                          <div class="col-lg-6">
+                            <input id="nama" type="text" class="form-control" name="nama" value="{{ $berkas->nama }}" required data-parsley-error-message="Nama harus diisi.">
+
+                            @if ($errors->has('nama'))
+                              <span class="help-block">
+                                  <strong>{{ $errors->first('nama') }}</strong>
+                              </span>
+                            @endif
+                          </div>
+                        </div>
+
+                    <div class="form-group{{ $errors->has('daterange') ? ' has-error' : '' }}">
+                      <label for="daterange" class="col-lg-3 control-label">Tanggal:</label>
+                        <div class="col-lg-6">
+                            <div class="input-prepend input-group">
+                              <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                              <input type="text" id="daterange" name="daterange" class="form-control daterange">
+                            </div>
+                            @if ($errors->has('daterange'))
+                            <span class="help-block">
+                              <strong>{{ $errors->first('daterange') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <center>
+                      <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-6">
+                          <button type="submit" class="btn btn-danger ftco-animate">Simpan Perubahan
+                            <span></span>
+                          <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate">Batal
+                        </div>
+                      </div>
+                    </center>
+                   </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+<br />
 @endsection
 
 @section('script')
-    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-    <script type="text/javascript">
-        $('input[name="daterange"]').daterangepicker({
-            locale: {
-                format: 'YYYY/MM/DD'
-            },
-            startDate: '{{$berkas->tanggalMulaiPesanan}}',
-            endDate: '{{$berkas->tanggalAkhirPesanan}}'
-        });
-    </script>
+<script src="{{ asset('js/moment/min/moment.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+<script src="{{ asset('js/parsleyjs/dist/parsley.min.js') }}"></script>
+<script type="text/javascript">
+  //daterangepicker
+  $('input[name="daterange"]').daterangepicker({
+    locale: {
+      format: 'YYYY/MM/DD'
+    },
+  });
+
+  //parsleyjs
+  function init_parsley() {
+
+      if (typeof(parsley) === 'undefined') {
+        return;
+      }
+      console.log('init_parsley');
+
+      $ /*.listen*/ ('parsley:field:validate', function() {
+        validateFront();
+      });
+
+      $('#form-valid .btn').on('click', function() {
+        $('#form-valid').parsley().validate();
+        validateFront();
+      });
+      var validateFront = function() {
+        if (true === $('#form-valid').parsley().isValid()) {
+          $('.bs-callout-info').removeClass('hidden');
+          $('.bs-callout-warning').addClass('hidden');
+        } else {
+          $('.bs-callout-info').addClass('hidden');
+          $('.bs-callout-warning').removeClass('hidden');
+        }
+      };
+
+      try {
+        hljs.initHighlightingOnLoad();
+      } catch (err) {}
+
+    };
+
+    $(document).ready(function() {
+      init_parsley();
+
+    });
+</script>
 @endsection
