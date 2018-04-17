@@ -9,12 +9,12 @@
           <div class="x_title">
             <h3>Tambah User</h3>
             <div class="clearfix"></div>
-            @if (session('status'))
-            <div class="alert alert-info alert-dismissible fade in">
-              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-              <strong>Success.</strong> {{ session('status') }}
-            </div>
-            @endif
+              @if (session('status'))
+              <div class="alert alert-info alert-dismissible fade in">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success.</strong> {{ session('status') }}
+              </div>
+              @endif
           </div>
           <center>
             <div class="x_content">
