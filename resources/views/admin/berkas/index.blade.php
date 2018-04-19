@@ -17,12 +17,6 @@
               <h3>Berkas Tersimpan</i></h3>
             </div>
             <div class="col-md-6">
-              @if (session('status'))
-              <div class="alert alert-info alert-dismissible fade in">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Success.</strong> {{ session('status') }}
-              </div>
-              @endif
               <div>
                 <a href="{{route('admin.model.form', ['model' => 'berkas'])}}" class="btn btn-default ftco-animate pull-right fa fa-plus-square" style="padding: 14px 20px; font-size: 15px;"> &nbsp &nbsp Tambah Berkas </a>
               </div>
@@ -30,42 +24,42 @@
           </div>
           <div class="container">
             <div class="x_content">
-              <table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%" alignright>
+              <table id="datatable-responsive" class="table table-striped table-vcenter" cellspacing="0" width="100%" alignright>
                 <thead>
                   <tr>
-                    <th>Nama File</th>
-                    <th>Tanggal Mulai Order</th>
-                    <th>Tanggal Akhir Order</th>
-                    <th>Total No. HP</th>
-                    <th>Total Email</th>
-                    <th>Total Order</th>
-                    <th>Status</th>
-                    <th>Tindakan</th>
+                    <th class="text-center">Nama File</th>
+                    <th class="text-center">Tanggal Mulai Order</th>
+                    <th class="text-center">Tanggal Akhir Order</th>
+                    <th class="text-center">Total No. HP</th>
+                    <th class="text-center">Total Email</th>
+                    <th class="text-center">Total Order</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center" style="width:17%">Tindakan</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach($allBerkas as $berkas)
                   <tr>
                     <td>{{$berkas->nama}}</td>
-                          <td>{{$berkas->tanggalMulaiPesanan}}</td>
-                          <td>{{$berkas->tanggalAkhirPesanan}}</td>
-                          <td>{{$berkas->totalNoHp}}</td>
-                          <td>{{$berkas->totalEmail}}</td>
-                          <td>{{$berkas->totalPesanan}}</td>
-                          <td>
-                              @if($berkas->isSent)
-                                  Link sudah terkirim
-                              @else
-                                  Link belum dikirm
-                              @endif
+                    <td>{{$berkas->tanggalMulaiPesanan}}</td>
+                    <td>{{$berkas->tanggalAkhirPesanan}}</td>
+                    <td>{{$berkas->totalNoHp}}</td>
+                    <td>{{$berkas->totalEmail}}</td>
+                    <td>{{$berkas->totalPesanan}}</td>
+                    <td>
+                      @if($berkas->isSent)
+                        <span class="label label-success">Terkirim</span>
+                      @else
+                        <span class="label label-warning">Belum Terkirim</span>
+                      @endif
                           </td>
                     <td>
                       <a class="btn btn-dark ftco-animate btn-xs" href="{{route('admin.model.updateForm', ['model' => 'berkas', 'id' => $berkas->id])}}">Ubah</a>
                       @if($berkas->isSent)
-                        <a onclick="hapusFunction()" class="btn btn-danger ftco-animate btn-xs">Hapus</a>
+                        <a onclick="hapusFunction('{{$berkas->nama}}','{{route('admin.model.delete', ['model' => 'berkas', 'id' => $berkas->id])}}')" class="btn btn-danger ftco-animate btn-xs">Hapus</a>
                         <a onclick="kirimFunction()" class="btn btn-default ftco-animate btn-xs" disabled>Kirim</a>
                       @else
-                        <a onclick="hapusFunction()" class="btn btn-danger ftco-animate btn-xs">Hapus</a>
+                        <a onclick="hapusFunction('{{$berkas->nama}}','{{route('admin.model.delete', ['model' => 'berkas', 'id' => $berkas->id])}}')" class="btn btn-danger ftco-animate btn-xs">Hapus</a>
                         <a onclick="kirimFunction()" class="btn btn-default ftco-animate btn-xs">Kirim</a>
                       @endif
                   </tr>
@@ -119,45 +113,31 @@
         fixedHeader: true
       });
 
-      var $datatable = $('#datatable-checkbox');
-
-      $datatable.dataTable({
-        'order': [
-          [1, 'asc']
-        ],
-        'columnDefs': [{
-          orderable: false,
-          targets: [0]
-        }]
-      });
-      $datatable.on('draw.dt', function() {
-        $('checkbox input').iCheck({
-          checkboxClass: 'icheckbox_flat-green'
-        });
-      });
     };
 
     // swal Hapus
 
-    function hapusFunction() {
+    function hapusFunction(username, actionPath) {
+      console.log(actionPath);
       event.preventDefault(); // prevent form submit
       swal({
-          title: "Hapus Berkas?",
-          text: "",
+          title: "Hapus berkas ini?",
+          text: "Setelah dihapus, berkas ini tidak dapat dipulihkan.",
           type: "warning",
           showCancelButton: true,
           confirmButtonColor: "#DD6B55",
-          confirmButtonText: "Ya",
+          confirmButtonText: "Hapus",
           cancelButtonText: "Batal",
           closeOnConfirm: false,
           closeOnCancel: false
         },
         function(isConfirm) {
           if (isConfirm) {
-            // swal("Terhapus!", "Berkas anda sudah terhapus.", "success");
-            document.getElementById("hapus").submit();
+            var hapusForm = document.getElementById("hapus");
+            hapusForm.action = actionPath;
+            hapusForm.submit();
           } else {
-            swal("Batal", "Berkas anda aman.", "");
+            swal("Batal", username + " tidak terhapus.",);
           }
         });
     }
@@ -188,4 +168,11 @@
       init_DataTables()
     });
   </script>
+
+  @if (session('status'))
+  <script>
+      swal("Berhasil", "{{ session('status') }}", "success");
+  </script>
+  @endif
+
 @endsection
