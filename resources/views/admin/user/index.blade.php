@@ -39,7 +39,13 @@
                       <td>{{$user->nik}}</td>
                       <td>{{$user->name}}</td>
                       <td>{{$user->email}}</td>
-                      <td>{{$user->role->name}}</td>
+                      <td class="text-center">
+                        @if ($user->role->name == 'admin')
+                        <span class="label label-warning">Admin</span>
+                        @else
+                        <span class="label label-primary">Supervisor</span>
+                        @endif
+                      </td>
                       <td>
                         <center>
                           <a href="{{route('admin.model.updateForm', ['model' => 'user', 'id' => $user->id])}}" class="btn btn-dark ftco-animate">Ubah</a>
@@ -103,8 +109,8 @@
       console.log(actionPath);
       event.preventDefault(); // prevent form submit
       swal({
-          title: "Hapus " + username + " ?",
-          text: "",
+          title: "Hapus " + username + "?",
+          text: "Setelah dihapus, " +username+ " tidak akan memiliki akses lagi di I-CX.",
           type: "warning",
           showCancelButton: true,
           confirmButtonColor: "#DD6B55",
@@ -119,7 +125,7 @@
             hapusForm.action = actionPath;
             hapusForm.submit();
           } else {
-            swal("Batal", username + " tidak terhapus.", "info");
+            swal("Batal", username + " tidak terhapus.",);
           }
         });
     }
