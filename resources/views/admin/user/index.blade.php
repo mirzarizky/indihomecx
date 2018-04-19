@@ -16,12 +16,6 @@
               <h3>Daftar <i>User</i></h3>
             </div>
             <div class="col-md-6">
-              @if (session('status'))
-              <div class="alert alert-info alert-dismissible fade in">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Success.</strong> {{ session('status') }}
-              </div>
-              @endif
               <div>
                 <a href="{{route('admin.model.form', ['model' => 'user'])}}" class="btn btn-default ftco-animate pull-right fa fa-plus-square" style="padding: 14px 20px; font-size: 15px;"> &nbsp &nbsp Tambah User </a>
               </div>
@@ -29,14 +23,14 @@
           </div>
             <div class="container">
               <div class="x_content">
-                <table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%" alignright>
+                <table id="datatable-responsive" class="table table-striped table-vcenter" cellspacing="0" width="100%" alignright>
                   <thead>
                     <tr>
-                      <th>NIK</th>
-                      <th>Nama</th>
-                      <th>Email</th>
-                      <th>Hak Akses</th>
-                      <th>Tindakan</th>
+                      <th class="text-center" style="width:10%">NIK</th>
+                      <th class="text-center">Nama</th>
+                      <th class="text-center" style="width:20%">Email</th>
+                      <th class="text-center" style="width:15%">Hak Akses</th>
+                      <th class="text-center" style="width:20%">Tindakan</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -49,7 +43,7 @@
                       <td>
                         <center>
                           <a href="{{route('admin.model.updateForm', ['model' => 'user', 'id' => $user->id])}}" class="btn btn-dark ftco-animate">Ubah</a>
-                          <a onclick="hapusFunction()" class="btn btn-danger ftco-animate">Hapus</a>
+                          <a onclick="hapusFunction('{{$user->name}}', '{{route('admin.model.delete', ['model' => 'user', 'id' => $user->id])}}')" class="btn btn-danger ftco-animate">Hapus</a>
                         </center>
                       </td>
                     </tr>
@@ -105,10 +99,11 @@
 
     // swal Hapus
 
-    function hapusFunction() {
+    function hapusFunction(username, actionPath) {
+      console.log(actionPath);
       event.preventDefault(); // prevent form submit
       swal({
-          title: "Hapus User?",
+          title: "Hapus " + username + " ?",
           text: "",
           type: "warning",
           showCancelButton: true,
@@ -116,14 +111,15 @@
           confirmButtonText: "Hapus",
           cancelButtonText: "Batal",
           closeOnConfirm: false,
-          closeOnCancel: true
+          closeOnCancel: false
         },
         function(isConfirm) {
           if (isConfirm) {
-            // swal("Terhapus!", "User berhasil dihapus.", "success");
-            document.getElementById("hapus").submit();
+            var hapusForm = document.getElementById("hapus");
+            hapusForm.action = actionPath;
+            hapusForm.submit();
           } else {
-            // swal("Batal", "User tidak terhapus.", "");
+            swal("Batal", username + " tidak terhapus.", "info");
           }
         });
     }
@@ -132,4 +128,11 @@
       init_DataTables()
     });
   </script>
-  @endsection
+
+  @if (session('status'))
+  <script>
+      swal("Berhasil", "{{ session('status') }}", "success");
+  </script>
+  @endif
+
+@endsection
