@@ -67,7 +67,7 @@
                 <li><a><i class="fa fa-pencil-square-o"></i> Survei <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="survei_adm.html">Lihat Form Survei</a></li>
-                    <li><a href="faktor_kepuasan_adm.html">Edit Survei</a></li>
+                    <li><a href="{{route('admin.model.index', ['model' => 'kriteria'])}}">Edit Survei</a></li>
                   </ul>
                 </li>
                 @else
