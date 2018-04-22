@@ -23,7 +23,8 @@ class UserController extends Controller
 
     public function index() {
         $adminRole = Role::where('name', 'admin')->first();
-        $users = User::whereNotIn('role_id', [$adminRole->id])->get();
+        $spvRole = Role::where('name', 'supervisor')->first();
+        $users = User::whereIn('role_id', [$adminRole->id, $spvRole->id])->get();
         return view('admin.user.index', compact('users'));
     }
 

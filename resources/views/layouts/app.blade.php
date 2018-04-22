@@ -53,7 +53,12 @@
 
             <div class="menu_section">
               <ul class="nav side-menu">
-                <li><a href="{{route('admin.index')}}"><i class="fa fa-home"></i> Dashboard</a>
+                <li>
+                    @if(Auth::user()->role->name == 'admin')
+                        <a href="{{route('admin.index')}}"><i class="fa fa-home"></i> Dashboard</a>
+                    @elseif(Auth::user()->role->name == 'supervisor')
+                        <a href="{{route('spv.index')}}"><i class="fa fa-home"></i> Dashboard</a>
+                    @endif
                 </li>
                 @if(Auth::user()->role->name == 'admin')
                 <li><a href="{{route('admin.model.index', ['model' => 'user'])}}"><i class="fa fa-users"></i> Users</a>
