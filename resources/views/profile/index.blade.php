@@ -1,33 +1,54 @@
 @extends('layouts.app')
-
+@section('title', 'User Profile')
+@section('style')
+<link rel="stylesheet" type="text/css" href="{{asset('css/sweetalert/sweetalert.min.css')}}">
+@endsection
 @section('content')
-    <div class="col-lg-9">
-        <div class="panel panel-default">
-            <div class="panel-heading">User Profile</div>
+<div class="right_col" role="main">
+  <div class="">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+            <h3>Profile</h3>
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <div class="container">
+              <div class="row">
+                <!-- left column -->
 
-            <div class="panel-body">
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
                 <center>
-                    <img class="img-responsive img-circle" src="@if(!is_null($user->avatar_id)) {{asset('storage/'.''.$user->avatar->path)}} @else {{ asset('images/user.png') }} @endif" alt="Avatar" width="20%"><br/>
-                    <h2>{{$user->name}}</h2>
-                    <h5>
-                        <b>
-                            {{$user->nik}}
-                        </b>
-                    </h5>
-                    <h5>{{$user->email}}</h5>
-                    <h5>{{$user->noHp}}</h5>
-                    <br/>
-                    <p>
-                        <a href="{{ route('profile.edit') }}" class="btn btn-sm btn-default">Edit Profile</a>
-                        <a href="{{ route('profile.password') }}" class="btn btn-sm btn-warning">Ubah Password</a>
-                    </p>
-                </center>
+                  <img class="img-responsive avatar-view" src="@if(!is_null($user->avatar_id)) {{asset('storage/'.''.$user->avatar->path)}} @else {{ asset('images/user.png') }} @endif" alt="Avatar" width="20%" style="border-radius:50%; border-color:red;"> <br>
+                  <h2>{{$user->name}}</h2>
+                  <h5>
+                      <b>{{$user->nik}}</b>
+                  </h5>
+                  <h5>{{$user->email}}</h5>
+                  <h5>{{$user->noHp}}</h5>
+                  <br>
+                  <p>
+                    <a href="{{ route('profile.edit') }}" class="btn btn-danger ftco-animate">Edit Profile</a>
+                    <a href="{{ route('profile.password') }}" class="btn btn-danger ftco-animate">Ubah Password</a>
+                  </p>
+              </div>
             </div>
+            </center>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+</div>
+<br/>
+@endsection
+@section('script')
+<script src="{{asset('js/sweetalert/sweetalert.min.js')}}"></script>
+
+  @if (session('status'))
+  <script>
+      swal("Berhasil", "{{ session('status') }}", "success");
+  </script>
+  @endif
+
 @endsection
