@@ -23,6 +23,14 @@
                   <h2>{{$user->name}}</h2>
                   <h5>
                       <b>{{$user->nik}}</b>
+                      <b>-</b>
+                      <b>
+                        @if ($user->role->name == 'admin')
+                        Administrator
+                        @else
+                        Supervisor
+                        @endif
+                      </b>
                   </h5>
                   <h5>{{$user->email}}</h5>
                   <h5>{{$user->noHp}}</h5>
