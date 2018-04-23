@@ -173,6 +173,10 @@ class UserController extends Controller
 
     public function delete($id)
     {
+        $user = User::where('id',$id)->first();
+        Storage::delete($user->avatar->path);
+        Avatar::destroy($user->avatar_id);
+
         User::destroy($id);
 
         return redirect()->route('admin.model.index', ['model' => 'user'])->with(['status' => 'User berhasil dihapus!']);
