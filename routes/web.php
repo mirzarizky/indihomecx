@@ -55,4 +55,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/excel/{id}', 'HomeController@excel')->name('excel');
 Route::get('/donlot/{id}', 'HomeController@download')->name('donlot');
 
-
+Route::get('/lihatsurvei', function () {
+    return view('survei');
+})->name('lihatsurvei');
