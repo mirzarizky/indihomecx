@@ -23,7 +23,8 @@ class UserController extends Controller
 
     public function index() {
         $adminRole = Role::where('name', 'admin')->first();
-        $users = User::whereNotIn('role_id', [$adminRole->id])->get();
+        $spvRole = Role::where('name', 'supervisor')->first();
+        $users = User::whereIn('role_id', [$adminRole->id, $spvRole->id])->get();
         return view('admin.user.index', compact('users'));
     }
 
@@ -172,6 +173,11 @@ class UserController extends Controller
 
     public function delete($id)
     {
+        $user = User::where('id',$id)->first();
+        if(!empty($user->avatar_id)) {
+            Storage::delete($user->avatar->path);
+            Avatar::destroy($user->avatar_id);
+        }
         User::destroy($id);
 
         return redirect()->route('admin.model.index', ['model' => 'user'])->with(['status' => 'User berhasil dihapus!']);
