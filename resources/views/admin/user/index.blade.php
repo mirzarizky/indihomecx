@@ -34,6 +34,7 @@
                     </tr>
                   </thead>
                   <tbody>
+                  @if(!empty($users))
                     @foreach($users as $user)
                     <tr>
                       <td>{{$user->nik}}</td>
@@ -56,6 +57,11 @@
                       </td>
                     </tr>
                     @endforeach
+                  @else
+                      <tr>
+                          <td colspan="5">Tidak ada User dalam database</td>
+                      </tr>
+                  @endif
                   </tbody>
                 </table>
                 <form id="hapus" method="get" style="display:none;" action="{{route('admin.model.delete', ['model' => 'user', 'id' => $user->id])}}"></form>

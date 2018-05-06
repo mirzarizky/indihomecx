@@ -142,7 +142,7 @@ class UserController extends Controller
             'name' => $request->nama,
             'email' => $request->email,
             'role_id' => $request->role,
-            'password' => bcrypt('password')
+            'password' => bcrypt($defaultPassword)
         ]);
         return redirect()->route('admin.model.index', ['model' => 'user'])->with(['status' => 'User berhasil ditambahkan! Silahkan cek email untuk keterangan lebih lanjut.']);
     }
@@ -173,6 +173,11 @@ class UserController extends Controller
 
     public function delete($id)
     {
+        $user = User::where('id',$id)->first();
+        if(!empty($user->avatar_id)) {
+            Storage::delete($user->avatar->path);
+            Avatar::destroy($user->avatar_id);
+        }
         User::destroy($id);
 
         return redirect()->route('admin.model.index', ['model' => 'user'])->with(['status' => 'User berhasil dihapus!']);
