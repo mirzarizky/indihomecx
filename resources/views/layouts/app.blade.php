@@ -72,12 +72,12 @@
                 </li>
                 <li><a><i class="fa fa-pencil-square-o"></i> Survei <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="survei_adm.html">Lihat Form Survei</a></li>
+                    <li><a href="{{ route('lihatsurvei') }}">Lihat Form Survei</a></li>
                     <li><a href="{{route('admin.model.index', ['model' => 'kriteria'])}}">Edit Faktor Kepuasan Survei</a></li>
                   </ul>
                 </li>
                 @else
-                <li><a href="survei_spv.html"><i class="fa fa-pencil-square-o"></i> Lihat Form Survei</a>
+                <li><a href="{{ route('lihatsurvei') }}"><i class="fa fa-pencil-square-o"></i> Lihat Form Survei</a>
                 </li>
                 @endif
               </ul>

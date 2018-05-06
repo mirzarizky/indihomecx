@@ -42,7 +42,7 @@
 									<span class="fa fa-star-o" data-rating="3"></span>
 									<span class="fa fa-star-o" data-rating="4"></span>
 									<span class="fa fa-star-o" data-rating="5"></span>
-									<input type="hidden" name="whatever1" class="rating-value" value="0">
+									<input type="hidden" name="whatever1" class="rating-value" value="0" required>
 								</div>
 							</div>
 						</div>
@@ -75,7 +75,7 @@
 	<!-- END section -->
 
 
-	<script src="{{ asset('js/jquery3.min.js') }}"></script>
+	  <script src="{{ asset('js/jquery3.min.js') }}"></script>
 		<script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
 		<script>
 		$(document).ready(function($) {
