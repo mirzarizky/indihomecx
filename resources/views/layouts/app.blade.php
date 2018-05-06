@@ -19,7 +19,8 @@
   <!-- Font Awesome -->
   <link href="{{asset('css/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
   <!-- Styles -->
-  <link href="{{ asset('css/custom.css') }}" rel="stylesheet"> @yield('style')
+  <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+  @yield('style')
 </head>
 
 <body class="nav-md">

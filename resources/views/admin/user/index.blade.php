@@ -49,16 +49,16 @@
                       <td>
                           @if ($user->role->name == 'supervisor')
                             <center>
-                              <a href="{{route('admin.model.updateForm', ['model' => 'user', 'id' => $user->id])}}" class="btn btn-dark ftco-animate">Ubah</a>
-                              <a onclick="hapusFunction('{{$user->name}}', '{{route('admin.model.delete', ['model' => 'user', 'id' => $user->id])}}')" class="btn btn-danger ftco-animate">Hapus</a>
+                              <a href="{{route('admin.model.updateForm', ['model' => 'user', 'id' => $user->id])}}" class="btn-xs btn btn-dark ftco-animate">Ubah</a>
+                              <a onclick="hapusFunction('{{$user->name}}', '{{route('admin.model.delete', ['model' => 'user', 'id' => $user->id])}}')" class="btn-xs btn btn-danger ftco-animate">Hapus</a>
                             </center>
                           @endif
                       </td>
                     </tr>
-                    <form id="hapus" method="get" style="display:none;" action="{{route('admin.model.delete', ['model' => 'user', 'id' => $user->id])}}"></form>
                     @endforeach
                   </tbody>
                 </table>
+                <form id="hapus" method="get" style="display:none;" action="{{route('admin.model.delete', ['model' => 'user', 'id' => $user->id])}}"></form>
               </div>
             </div>
           </div>
