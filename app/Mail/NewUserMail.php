@@ -18,11 +18,6 @@ class NewUserMail extends Mailable
         $this->data = $data;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
         return $this
