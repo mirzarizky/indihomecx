@@ -51,10 +51,16 @@ Route::prefix('profile')->group(function () {
     Route::post('/update', 'Model\UserController@updateMe')->name('profile.update');
 });;
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/excel/{id}', 'HomeController@excel')->name('excel');
-Route::get('/donlot/{id}', 'HomeController@download')->name('donlot');
+Route::get('home', 'HomeController@index')->name('home');
+
+Route::get('s/{encryptedId}', 'CustomerController@survei');
+Route::get('survei','CustomerController@indexSurvei')->name('survei');
 
 Route::get('/lihatsurvei', function () {
     return view('survei');
 })->name('lihatsurvei');
+
+Route::get('sendMail/{id}', 'HomeController@sendmailsms');
+Route::get('testdecrypt/{id}', 'HomeController@testDecrypt');
+Route::get('shortme', 'CustomerController@shortme');
+

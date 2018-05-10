@@ -82,39 +82,39 @@
     //Table
     function init_DataTables() {
 
-      console.log('run_datatables');
+      // console.log('run_datatables');
 
-      if (typeof($.fn.DataTable) === 'undefined') {
-        return;
-      }
-      console.log('init_DataTables');
+      // if (typeof($.fn.DataTable) === 'undefined') {
+      //   return;
+      // }
+      // console.log('init_DataTables');
 
-      $('#datatable').dataTable();
+      // $('#datatable').dataTable();
 
-      $('#datatable-keytable').DataTable({
-        keys: true
-      });
+      // $('#datatable-keytable').DataTable({
+      //   keys: true
+      // });
 
       $('#datatable-responsive').DataTable();
 
-      $('#datatable-scroller').DataTable({
-        ajax: "js/datatables/json/scroller-demo.json",
-        deferRender: true,
-        scrollY: 380,
-        scrollCollapse: true,
-        scroller: true
-      });
+      // $('#datatable-scroller').DataTable({
+      //   ajax: "js/datatables/json/scroller-demo.json",
+      //   deferRender: true,
+      //   scrollY: 380,
+      //   scrollCollapse: true,
+      //   scroller: true
+      // });
 
-      $('#datatable-fixed-header').DataTable({
-        fixedHeader: true
-      });
+      // $('#datatable-fixed-header').DataTable({
+      //   fixedHeader: true
+      // });
 
-    };
+    }
 
     // swal Hapus
 
     function hapusFunction(username, actionPath) {
-      console.log(actionPath);
+      // console.log(actionPath);
       event.preventDefault(); // prevent form submit
       swal({
           title: "Hapus " + username + "?",
@@ -133,7 +133,7 @@
             hapusForm.action = actionPath;
             hapusForm.submit();
           } else {
-            swal("Batal", username + " tidak terhapus.",);
+            swal("Batal", username + " tidak terhapus.");
           }
         });
     }

@@ -66,7 +66,7 @@
                   @endforeach
                 </tbody>
               </table>
-              <form id="hapus" method="get" style="display:none;" action="{{route('admin.model.delete', ['model' => 'berkas', 'id' => $berkas->id])}}"></form>
+              <form id="hapus" method="get" style="display:none;" action=""></form>
               <form id="kirim" method="get" style="display:none;" action="http://google.com"></form>
             </td>
             </div>

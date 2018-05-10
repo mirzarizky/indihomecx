@@ -13,6 +13,7 @@ return [
     | to have a conventional place to find your various credentials.
     |
     */
+    'dropbox' => env('DROPBOX_TOKEN'),
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),

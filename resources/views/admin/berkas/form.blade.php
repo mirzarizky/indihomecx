@@ -32,9 +32,9 @@
                         <input type="text" id="daterange" name="daterange" class="form-control daterange">
                       </div>
                       @if ($errors->has('daterange'))
-                      <span class="help-block">
-                        <strong>{{ $errors->first('daterange') }}</strong>
-                      </span>
+                          <span class="help-block">
+                            <strong>{{ $errors->first('daterange') }}</strong>
+                          </span>
                       @endif
                     </div>
                     </div>
@@ -44,7 +44,7 @@
                       <label class="btn btn-default btn-file" style="margin-left:10px"> Pilih Berkas untuk di Upload<br />
                         <input id="berkas" type="file" class="btn btn-default btn-file" name="berkas" accept=".xlsx, .xls"/>
                       </label>
-                      <label style="font-size:10px;">*.xls,.xlsx</label>
+                      <label style="font-size:10px;">*.xlsx</label>
                         @if ($errors->has('berkas'))
                         <span class="help-block">
                             <strong>{{ $errors->first('berkas') }}</strong>
@@ -57,13 +57,24 @@
                       <output id="filesInfo"></output>
                     </div>
 
+                  <div class="form-group{{ $errors->has('send') ? ' has-error' : '' }}">
+                      <label for="daterange" class="col-lg-3 control-label"></label>
+                      <div class="col-lg-6">
+                          <div class="input-prepend input-group">
+                              <input type="checkbox" name="send" checked{{ old('remember') ? 'checked' : '' }}> Kirim Langsung
+                          </div>
+                          @if ($errors->has('daterange'))
+                                <strong>{{ $errors->first('daterange') }}</strong>
+                          @endif
+                      </div>
+                  </div>
+
                     <center>
                       <div class="form-group">
                         <label class="col-md-3 control-label"></label>
                         <div class="col-md-6">
-                          <button type="submit" class="btn btn-danger ftco-animate">Tambah Berkas
-                            <span></span>
-                          <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate">Batal
+                            <button type="submit" class="btn btn-danger ftco-animate">Tambah Berkas</button>
+                          <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate">Batal</button>
                         </div>
                       </div>
                     </center>
@@ -87,7 +98,7 @@
 $('input[name="daterange"]').daterangepicker({
   locale: {
     format: 'YYYY/MM/DD'
-  },
+  }
 });
 
 //namafile

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Model;
 
 use App\Berkas;
+use App\Jobs\CreatePesananFromBerkas;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +30,8 @@ class BerkasController extends Controller
 
         $request->validate([
             'daterange' => 'required',
-            'berkas' => 'required|file|mimes:xlsx'
+            'berkas' => 'required|file|mimes:xlsx',
+            'send' => 'nullable'
         ]);
 
         $file = $request->file('berkas');
@@ -41,16 +43,20 @@ class BerkasController extends Controller
         $fileName = date('Ymd-His')."_DATA_".date('jM', strtotime($startDate))."-".date('jM', strtotime($endDate)).".xlsx";
         //$path = $file->storeAs('public/berkas', $fileName);
         $path = Storage::disk('public')->putFileAs('berkas', $file, $fileName);
-        if (!empty(env('DROPBOX_TOKEN'))){
-            Storage::disk('dropbox')->putFileAs('berkas', $file, $fileName);
-        }
 
-        Berkas::create([
+
+        $berkas = Berkas::create([
             'nama' => $fileName,
             'path' => $path,
             'tanggalMulaiPesanan' => $startDate,
             'tanggalAkhirPesanan' => $endDate
         ]);
+        if(!empty($request->send)) {
+            CreatePesananFromBerkas::dispatch($berkas->id, true);
+        } else {
+            CreatePesananFromBerkas::dispatch($berkas->id, false);
+        }
+
         return redirect()
             ->route('admin.model.index', ['model' => 'berkas'])
             ->with(['status' => 'Berkas berhasil ditambahkan!']);
@@ -87,18 +93,24 @@ class BerkasController extends Controller
     public function delete($id)
     {
         $berkas = Berkas::findOrFail($id);
-        Storage::disk('public')->delete($berkas->path);
-//        $berkas->delete();
+        if(($berkas->berkasStatus == 2)||($berkas->berkasStatus == 4)) {
+            Storage::disk('public')->delete($berkas->path);
+            $berkas->delete();
 
-        return redirect()
-            ->route('admin.model.index', ['model' => 'berkas'])
-            ->with(['status' => 'Berkas berhasil dihapus!']);
-    }
+            return redirect()
+                ->route('admin.model.index', ['model' => 'berkas'])
+                ->with(['status' => 'Berkas berhasil dihapus.']);
+        } elseif (($berkas->berkasStatus == 1)||($berkas->berkasStatus == 3)) {
+            return redirect()
+                ->route('admin.model.index', ['model' => 'berkas'])
+                ->with(['status' => 'Gagal. Berkas sedang diproses.']);
+        } else {
+            Storage::disk('public')->delete($berkas->path);
+            $berkas->forceDelete();
 
-    public function download($id)
-    {
-        $berkas = Berkas::findOrFail($id);
-        $url=Storage::disk('public')->temporaryUrl($berkas->path, now()->addMinutes(1));
-        return dd($url);
+            return redirect()
+                ->route('admin.model.index', ['model' => 'berkas'])
+                ->with(['status' => 'Berkas berhasil dihapus.']);
+        }
     }
 }

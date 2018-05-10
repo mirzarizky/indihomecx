@@ -22,8 +22,9 @@ class CreateBerkasTable extends Migration
             $table->integer('totalNoHp')->nullable();
             $table->integer('totalEmail')->nullable();
             $table->bigInteger('totalPesanan')->nullable();
-            $table->boolean('isSent')->default(false);
+            $table->tinyInteger('berkasStatus')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
