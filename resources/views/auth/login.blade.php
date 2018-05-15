@@ -48,16 +48,20 @@
 
             <h1>Silakan Login</h1>
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-              <input id="email" name="email" type="text" class="form-control" placeholder="NIK / E-mail" value="{{ old('email') }}" required autofocus> @if ($errors->has('email'))
-              <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span> @endif
+              <input id="email" name="email" type="text" class="form-control" placeholder="NIK / E-mail" value="{{ old('email') }}" required>
+              @if ($errors->has('email'))
+                <span class="help-block">
+                <strong>{{ $errors->first('email') }}</strong>
+                </span>
+              @endif
             </div>
             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-              <input id="password" type="password" name="password" class="form-control" placeholder="Password" required /> @if ($errors->has('password'))
-              <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span> @endif
+              <input id="password" type="password" name="password" class="form-control" placeholder="Password" required />
+              @if ($errors->has('password'))
+                  <span class="help-block">
+                  <strong>{{ $errors->first('password') }}</strong>
+                  </span>
+              @endif
             </div>
             <div class="form-group">
               <div class="col">
