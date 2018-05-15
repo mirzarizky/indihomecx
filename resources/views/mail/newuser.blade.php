@@ -13,7 +13,7 @@
     NIK : {!! $data['nik'] !!} <br>
     Password : {!! $data['password'] !!} <br>
 
-    Silahkan login <a href="{{config('app.url')}}/login">disini</a>. Kemudian ubah password anda.
+    Silahkan login <a href="{{route('login')}}">disini</a>. Kemudian ubah password anda.
 </div>
 
 </body>

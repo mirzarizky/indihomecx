@@ -3,19 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Berkas;
+use App\Jobs\SendMailAndSMS;
+use App\Mail\SurveyLinkMail;
+use App\Pesanan;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Excel;
 use Auth;
-
-
 
 class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     public function index()
@@ -48,17 +50,29 @@ class HomeController extends Controller
     }
 
     public function sendmailsms($id) {
-//        SendMailAndSMS::dispatch($id);
+        SendMailAndSMS::dispatch($id);
 //        $encrypted = Crypt::encryptString($id);
-        try {
-            $encrypted = Crypt::decryptString($id);
-            return $encrypted;
-        } catch (DecryptException $e) {
-            return redirect()->route('welcome');
-        }
+//        try {
+//            $encrypted = Crypt::decryptString($id);
+//            return $encrypted;
+//        } catch (DecryptException $e) {
+//            return redirect()->route('welcome');
+//        }
+        return 'php artisan queue:work';
     }
 
-    public function testDecrypt($id) {
+    public function testViewMail($id) {
+        $order = Pesanan::findOrFail($id);
+        $encrypted = Crypt::encryptString($id);
+        $data = array (
+            'nama' => $order->namaPelanggan,
+            'email' => $order->emailPelanggan,
+            'encryptedId' => $encrypted
+        );
+        return view('mail.surveylink', compact('data'));
+    }
+
+    public function testencrypt($id) {
         $encrypted = Crypt::encryptString($id);
         return $encrypted;
     }

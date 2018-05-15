@@ -38,10 +38,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/{model}/{id}/delete', 'AdminController@delete')->name('admin.model.delete');
 
     Route::get('berkas/{id}/download', 'Model\BerkasController@download')->name('berkas.download');
-});;
+});
 Route::prefix('spv')->group(function () {
     Route::get('/', 'SpvController@indexSpv')->name('spv.index');
-});;
+});
 
 Route::prefix('profile')->group(function () {
     Route::get('/', 'Model\UserController@indexMe')->name('profile.index');
@@ -49,12 +49,11 @@ Route::prefix('profile')->group(function () {
     Route::get('/password', 'Model\UserController@indexUpdatePassword')->name('profile.password');
     Route::post('/password', 'Model\UserController@updateProfilePassword')->name('profile.password.update');
     Route::post('/update', 'Model\UserController@updateMe')->name('profile.update');
-});;
-
-Route::get('home', 'HomeController@index')->name('home');
+});
 
 Route::get('s/{encryptedId}', 'CustomerController@survei');
-Route::get('survei','CustomerController@indexSurvei')->name('survei');
+Route::get('survei', 'CustomerController@indexSurvei')->name('survei');
+Route::post('survei', 'CustomerController@create')->name('survei.post');
 
 Route::get('/survey', function () {
     return view('survey');
@@ -68,7 +67,23 @@ Route::get('/lihatsurvei', function () {
     return view('viewsurvey');
 })->name('lihatsurvei');
 
-Route::get('sendMail/{id}', 'HomeController@sendmailsms');
-Route::get('testdecrypt/{id}', 'HomeController@testDecrypt');
-Route::get('shortme', 'CustomerController@shortme');
-
+// local develeopment only
+Route::get('sendmail/{id}', 'HomeController@sendmailsms');
+Route::get('testmail/{id}', 'HomeController@testViewMail');
+Route::get('testencrypt/{id}', 'HomeController@testencrypt');
+Route::get('home', 'HomeController@index')->name('home');
+Route::get('count', function () {
+   $counts = \App\DetailKriteria::all()
+       ->groupBy('kriteria_id');
+    $map = $counts->map(function ($item, $key) {
+        return collect($item)->count();
+    });
+    return $map->toJson();
+});
+Route::get('counts', function () {
+    $db = \DB::table('detail_kriteria')
+        ->select('kriteria_id', \DB::raw('count(*) as total'))
+        ->groupBy('kriteria_id')
+        ->get();
+    return $db->toJson();
+});

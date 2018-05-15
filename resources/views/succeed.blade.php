@@ -8,9 +8,8 @@
 	<title>Survey Pelanggan Indihome</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
-
-  <link href="{{asset('css/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
-  <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
 	<style media="screen">
 	body {
 		font-family: "Work Sans", Arial, sans-serif;
@@ -65,85 +64,54 @@
 </head>
 
 <body>
+<section class="probootstrap_section" id="section-feature-testimonial">
+    <center>
+      <img class="logo" src="{{ asset('images/indihome.png')}}" style="width:20%; padding-bottom:20px;" />
+    </center>
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-12 text-center mb-5 probootstrap-animate">
+          <h2 class="display-5 probootstrap-section-heading text-center">Thank You</h2>
+          <p class="border-bottom text-center">Respon anda sudah kami terima.</p>
+          <div class="containerIsi" style="text-align:left">
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
 
-	<body>
-	  <section class="probootstrap_section" id="section-feature-testimonial">
-	    <center>
-	      <img class="logo" src="{{ asset('images/indihome.png')}}" style="width:20%; padding-bottom:20px;" />
-	    </center>
-	    <div class="container">
-	      <div class="row justify-content-center mb-5">
-	        <div class="col-md-12 text-center mb-5 probootstrap-animate">
-	          <h2 class="display-5 probootstrap-section-heading text-center">Thank You</h2>
-	          <p class="border-bottom text-center">Respon anda sudah kami terima.</p>
-	          <div class="containerIsi" style="text-align:left">
-	          </div>
-	        </div>
-	      </div>
-	    </div>
-	    </div>
-	  </section>
+<script src="{{ asset('js/jquery3.min.js') }}"></script>
+<script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        var contentWayPoint = function() {
+                $('.probootstrap-animate').waypoint( function( direction ) {
+                    if( direction === 'down' && !$(this.element).hasClass('probootstrap-animated') ) {
+                        $(this.element).addClass('item-animate');
+                        setTimeout(function(){
+                            $('body .probootstrap-animate.item-animate').each(function(k){
+                                var el = $(this);
+                                setTimeout( function () {
+                                    var effect = el.data('animate-effect');
+                                    if ( effect === 'fadeIn') {
+                                        el.addClass('fadeIn probootstrap-animated');
+                                    } else if ( effect === 'fadeInLeft') {
+                                        el.addClass('fadeInLeft probootstrap-animated');
+                                    } else if ( effect === 'fadeInRight') {
+                                        el.addClass('fadeInRight probootstrap-animated');
+                                    } else {
+                                        el.addClass('fadeInUp probootstrap-animated');
+                                    }
+                                    el.removeClass('item-animate');
+                                },  k * 50, 'easeInOutExpo' );
+                            });
 
-
-    <script src="{{ asset('js/jquery3.min.js') }}"></script>
-		<script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
-		<script>
-		$(document).ready(function($) {
-
-			var contentWayPoint = function() {
-				var i = 0;
-				if ($('.probootstrap-animate').length > 0 ) {
-					$('.probootstrap-animate').waypoint( function( direction ) {
-
-						if( direction === 'down' && !$(this.element).hasClass('probootstrap-animated') ) {
-
-							i++;
-
-							$(this.element).addClass('item-animate');
-							setTimeout(function(){
-
-								$('body .probootstrap-animate.item-animate').each(function(k){
-									var el = $(this);
-									setTimeout( function () {
-										var effect = el.data('animate-effect');
-										if ( effect === 'fadeIn') {
-											el.addClass('fadeIn probootstrap-animated');
-										} else if ( effect === 'fadeInLeft') {
-											el.addClass('fadeInLeft probootstrap-animated');
-										} else if ( effect === 'fadeInRight') {
-											el.addClass('fadeInRight probootstrap-animated');
-										} else {
-											el.addClass('fadeInUp probootstrap-animated');
-										}
-										el.removeClass('item-animate');
-									},  k * 50, 'easeInOutExpo' );
-								});
-
-							}, 50);
-
-						}
-
-					} , { offset: '95%' } );
-				}
-			};
-			contentWayPoint();
-
-		  var ThumbnailOpacity = function() {
-		  	var t = $('.probootstrap-thumbnail');
-		  	t.hover(function(){
-		  		var $this = $(this);
-		  		t.addClass('sleep');
-		  		$this.removeClass('sleep');
-		  	}, function(){
-		  		var $this = $(this);
-		  		t.removeClass('sleep');
-		  	});
-		  }
-		  ThumbnailOpacity();
-
-		});
-
-		</script>
+                        }, 50);
+                    }
+                } , { offset: '95%' } );
+            };
+        contentWayPoint();
+    });
+</script>
 </body>
-
 </html>
