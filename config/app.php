@@ -169,7 +169,6 @@ return [
          */
         Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
         BC\Laravel\DropboxDriver\ServiceProvider::class,
-        Mbarwick83\Shorty\ShortyServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -231,8 +230,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Bugsnag' => Bugsnag\BugsnagLaravel\Facades\Bugsnag::class,
-        'Shorty'    => Mbarwick83\Shorty\Facades\Shorty::class,
-
 
     ],
 
