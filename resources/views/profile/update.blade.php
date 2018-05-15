@@ -144,6 +144,19 @@
 
     };
 
+
+    //namafile
+    function fileSelect(evt) {
+      var files = evt.target.files;
+      var result = '';
+      var file;
+      for (var i = 0; file = files[i]; i++) {
+        result += file.name;
+      }
+      document.getElementById('filesInfo').innerHTML = result;
+    }
+    document.getElementById('photoInput').addEventListener('change', fileSelect, false);
+
     $(document).ready(function() {
       init_parsley();
 
