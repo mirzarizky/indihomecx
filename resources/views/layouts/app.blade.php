@@ -30,7 +30,7 @@
       <div class="col-md-3 left_col menu_fixed">
         <div class="left_col scroll-view">
           <div class="navbar nav_title" style="border: 0;">
-            <a href="{{route('admin.index')}}" class="site_title border-bottom"> <img src="{{asset('images/logoindi.png')}}" style="margin-bottom:6%;"> <span>{{ config('app.name') }}</span></a>
+            <a href="@if(Auth::user()->role->name == 'admin'){{route('admin.index')}}@elseif(Auth::user()->role->name == 'supervisor'){{route('spv.index')}}@endif" class="site_title border-bottom"> <img src="{{asset('images/logoindi.png')}}" style="margin-bottom:6%;"> <span>{{ config('app.name') }}</span></a>
           </div>
 
           <div class="clearfix"></div>
@@ -46,12 +46,9 @@
             </div>
           </div>
           <!-- /menu profile quick info -->
-
           <br />
-
           <!-- sidebar menu -->
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-
             <div class="menu_section">
               <ul class="nav side-menu">
                 <li>
@@ -62,23 +59,28 @@
                     @endif
                 </li>
                 @if(Auth::user()->role->name == 'admin')
-                <li><a href="{{route('admin.model.index', ['model' => 'user'])}}"><i class="fa fa-users"></i> Users</a>
-                </li>
-                <li><a href="{{route('admin.model.index', ['model' => 'order'])}}"><i class="fa fa-check-square-o"></i> Order</a>
-                </li>
-                <li><a href="{{route('admin.model.index', ['model' => 'berkas'])}}"><i class="fa fa-file-excel-o"></i> Berkas</a>
-                </li>
-                <li><a href="{{route('admin.model.index', ['model' => 'sto'])}}"><i class="fa fa-university"></i> Cabang</a>
-                </li>
-                <li><a><i class="fa fa-pencil-square-o"></i> Survei <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu">
-                    <li><a href="{{ route('lihatsurvei') }}">Lihat Form Survei</a></li>
-                    <li><a href="{{route('admin.model.index', ['model' => 'kriteria'])}}">Edit Faktor Kepuasan Survei</a></li>
-                  </ul>
-                </li>
+                    <li>
+                        <a href="{{route('admin.model.index', ['model' => 'user'])}}"><i class="fa fa-users"></i> Users</a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.model.index', ['model' => 'order'])}}"><i class="fa fa-check-square-o"></i> Order</a>
+                    </li>
+                    <li><a href="{{route('admin.model.index', ['model' => 'berkas'])}}"><i class="fa fa-file-excel-o"></i> Berkas</a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.model.index', ['model' => 'sto'])}}"><i class="fa fa-university"></i> Cabang</a>
+                    </li>
+                    <li>
+                        <a><i class="fa fa-pencil-square-o"></i> Survei <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{ route('lihatsurvei') }}">Lihat Form Survei</a></li>
+                            <li><a href="{{route('admin.model.index', ['model' => 'kriteria'])}}">Edit Faktor Kepuasan Survei</a></li>
+                      </ul>
+                    </li>
                 @else
-                <li><a href="{{ route('lihatsurvei') }}"><i class="fa fa-pencil-square-o"></i> Lihat Form Survei</a>
-                </li>
+                    <li>
+                        <a href="{{ route('lihatsurvei') }}"><i class="fa fa-pencil-square-o"></i> Lihat Form Survei</a>
+                    </li>
                 @endif
               </ul>
             </div>
@@ -93,10 +95,8 @@
             <div class="nav toggle">
               <a id="menu_toggle"><i class="fa fa-bars" style="color:#23272b;"></i></a>
             </div>
-
             <ul class="nav navbar-nav navbar-right">
               <li class="">
-
                 <a href="javascript:" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                   <img src="@if(!is_null(Auth::user()->avatar_id)) {{asset('storage/'.''.Auth::user()->avatar->path)}} @else {{ asset('images/user.png') }} @endif" alt="">
                   {{ Auth::user()->name }}
@@ -116,7 +116,6 @@
         </div>
       </div>
       <!-- /top navigation -->
-
       @yield('content')
       <div class="clearfix"></div>
     </div>
@@ -129,8 +128,6 @@
     <div class="clearfix"></div>
   </footer>
   <!-- /footer content -->
-
-
   <!-- Scripts -->
   <script src="{{ asset('js/jquery.min.js') }}"></script>
   <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>

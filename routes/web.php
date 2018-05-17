@@ -75,10 +75,12 @@ Route::get('home', 'HomeController@index')->name('home');
 Route::get('count', function () {
    $counts = \App\DetailKriteria::all()
        ->groupBy('kriteria_id');
-    $map = $counts->map(function ($item, $key) {
-        return collect($item)->count();
+   dd($counts);
+   $map = $counts->map(function ($value) {
+       return collect($value)->count();
     });
-    return $map->toJson();
+//    return $map->toJson();
+    return $map;
 });
 Route::get('counts', function () {
     $db = \DB::table('detail_kriteria')
