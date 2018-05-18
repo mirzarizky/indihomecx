@@ -37,8 +37,7 @@
         <!-- /top tiles -->
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="dashboard_graph">
-
+            <div class="row dashboard_graph">
               <div class="row x_title">
                 <div class="col-md-6">
                   <h3><i>Rating</i> Kepuasan Pelanggan</h3>
@@ -54,7 +53,6 @@
                   <div class="clearfix"></div>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-6">
-                  <div>
                       @foreach($factors as $factor)
                         <p>{{$factor->nama}}</p>
                         <div class="">
@@ -63,7 +61,6 @@
                           </div>
                         </div>
                       @endforeach
-                  </div>
                 </div>
               </div>
               <div class="clearfix"></div>
@@ -91,7 +88,13 @@
                   @foreach($allSurvey as $survey)
                     <tr>
                       <td>{{$survey->pesanan_id}}</td>
-                      <td>{{$survey->komentar}}</td>
+                      <td>
+                          @if(!empty($survey->komentar))
+                              {{$survey->komentar}}
+                          @else
+                              N/A
+                          @endif
+                      </td>
                     </tr>
                   @endforeach
                   </tbody>

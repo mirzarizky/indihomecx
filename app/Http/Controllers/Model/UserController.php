@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Model;
 
 use App\Avatar;
 use App\Http\Controllers\Controller;
+use App\Kriteria;
 use App\Mail\NewUserMail;
 use App\Role;
 use App\User;
@@ -40,6 +41,11 @@ class UserController extends Controller
 
     public function indexUpdatePassword() {
         return view('profile.password');
+    }
+
+    public function checkSurveyForm() {
+        $allFactor = Kriteria::all();
+        return view('survey', compact('allFactor'));
     }
 
     public function updateProfilePassword(Request $request) {

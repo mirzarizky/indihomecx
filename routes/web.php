@@ -27,6 +27,7 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 
 Route::get('/first', 'Model\UserController@firstLogin')->name('user.first');
 Route::post('/first', 'Model\UserController@updatePassword')->name('user.updatePassword');
+Route::get('/view/survey', 'Model\UserController@checkSurveyForm')->name('survey.view');
 
 Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminController@indexAdmin')->name('admin.index');
@@ -55,37 +56,8 @@ Route::get('s/{encryptedId}', 'CustomerController@survei');
 Route::get('survei', 'CustomerController@indexSurvei')->name('survei');
 Route::post('survei', 'CustomerController@create')->name('survei.post');
 
-Route::get('/survey', function () {
-    return view('survey');
-})->name('survey');
-
-Route::get('/succeed', function () {
-    return view('succeed');
-})->name('succeed');
-
-Route::get('/lihatsurvei', function () {
-    return view('viewsurvey');
-})->name('lihatsurvei');
-
 // local develeopment only
 Route::get('sendmail/{id}', 'HomeController@sendmailsms');
 Route::get('testmail/{id}', 'HomeController@testViewMail');
 Route::get('testencrypt/{id}', 'HomeController@testencrypt');
 Route::get('home', 'HomeController@index')->name('home');
-Route::get('count', function () {
-   $counts = \App\DetailKriteria::all()
-       ->groupBy('kriteria_id');
-   dd($counts);
-   $map = $counts->map(function ($value) {
-       return collect($value)->count();
-    });
-//    return $map->toJson();
-    return $map;
-});
-Route::get('counts', function () {
-    $db = \DB::table('detail_kriteria')
-        ->select('kriteria_id', \DB::raw('count(*) as total'))
-        ->groupBy('kriteria_id')
-        ->get();
-    return $db->toJson();
-});

@@ -1,47 +1,93 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-                <div class="panel-body">
+    <title>Forgot Password</title>
+
+    <!-- Bootstrap -->
+    <link href="{{asset('css/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{{asset('css/nprogress/nprogress.css')}}" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="{{asset('css/custom.css')}}" rel="stylesheet">
+    <style media="screen">
+        h1 {
+            color: #9E9E9E;
+        }
+
+        .login {
+            background-color: #FAFAFA;
+        }
+
+        .logo {
+            margin-bottom: 30px;
+            margin-left: 0px;
+            -webkit-transition: 2s;
+        }
+
+        .logo:hover {
+            -webkit-transform: rotatey(180deg);
+        ;
+            -webkit-transition-duration: 2s;
+        }
+    </style>
+</head>
+<body class="login">
+<div>
+    <div class="login_wrapper">
+        <div class="animate form login_form">
+            <section class="login_content">
+                <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
+                    {{ csrf_field() }}
+
+                    <h1>Reset Password</h1>
                     @if (session('status'))
-                        <div class="alert alert-success">
+                        <span class="help-block">
                             {{ session('status') }}
-                        </div>
+                        </span>
                     @endif
-
-                    <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-mail Address" required autofocus>
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <button type="submit" class="btn btn-danger ftco-animate">
+                                Send Password Reset Link
+                            </button>
                         </div>
+                    </div>
+                </form>
+                <div class="clearfix"></div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="separator">
+                    <div class="clearfix"></div>
+                    <br/>
+                    <div>
+                        <center>
+                            <img class="logo" src="{{asset('images/indihome.png')}}" style="width:60%; padding-bottom:20px;" />
+                        </center>
+                        <p>Telkom Indonesia</p>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
 </div>
-@endsection
+
+<!-- NProgress -->
+<script src="{{asset('js/nprogress/nprogress.js')}}"></script>
+</body>
+</html>

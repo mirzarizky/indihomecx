@@ -18,10 +18,10 @@ class DetailKriteria extends Model
     ];
 
     public function kriteria() {
-        return $this->hasMany('App\Kriteria', 'id', 'kriteria_id');
+        return $this->hasOne('App\Kriteria', 'id', 'kriteria_id');
     }
 
     public function survei() {
-        return $this->hasMany('App\Survei', 'id', 'survei_id');
+        return $this->hasOne('App\Survei', 'id', 'survei_id');
     }
 }

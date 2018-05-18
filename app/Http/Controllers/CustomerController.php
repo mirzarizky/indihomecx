@@ -28,7 +28,7 @@ class CustomerController extends Controller
                     return redirect()->route('survei')->with(['id' => $order->id]);
                 } elseif ($order->isSurvei) {
 //                    TODO : redirect ke page yang isinya notif ke user sudah tersurvey
-                    return 'udah diisi shay. gaboleh isi lagi dong';
+                    return view('notify')->with(['title'=>'Oops!','message'=>'Maaf, sepertinya anda sudah mengisi survei ini.']);
                 } else {
                     return abort(404);
                 }
@@ -55,7 +55,7 @@ class CustomerController extends Controller
         $validator = Validator::make($request->all(), [
             'rating' => 'required|min:1|max:5',
             'factors' => 'required|array',
-            'feedback' => 'required|min:10',
+            'feedback' => 'max:160',
         ]);
         if ($validator->fails()) {
             return redirect()->route('survei')->with(['id' => $request->order_id])
@@ -78,7 +78,7 @@ class CustomerController extends Controller
                 $order->isSurvei = true;
                 $order->save();
             }
-            return view('succeed');
+            return view('notify')->with(['title'=>'Terimakasih', 'message'=>'Respon anda telah kami terima.']);
         }
     }
 

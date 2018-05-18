@@ -71,8 +71,8 @@
     <div class="container">
       <div class="row justify-content-center mb-5">
         <div class="col-md-12 text-center mb-5 probootstrap-animate">
-          <h2 class="display-5 probootstrap-section-heading text-center">Thank You</h2>
-          <p class="border-bottom text-center">Respon anda sudah kami terima.</p>
+          <h2 class="display-5 probootstrap-section-heading text-center">{{$title}}</h2>
+          <p class="border-bottom text-center">{{$message}}</p>
           <div class="containerIsi" style="text-align:left">
           </div>
         </div>
