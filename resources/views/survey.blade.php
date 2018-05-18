@@ -4,6 +4,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<title>Survey Pelanggan Indihome</title>
 
@@ -15,7 +17,6 @@
 </head>
 
 <body>
-
 	<nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar bg-faded" id="probootstrap-navbar">
 		<div class="container">
 			<img src="{{ asset('images/indihome.png')}}" style="width:15%">
@@ -31,8 +32,10 @@
 					<p class="border-bottom text-center">Please help us improve our service by completing this survey.</p>
 					<div style="text-align:left">
 						<form action="{{ route('survei.post') }}" method="post">
+                            @guest
 							{{csrf_field()}}
                             <input type="hidden" name="order_id" value="{{$order_id}}">
+                            @endguest
                             <p class="lead">1. Please rate our service.</p>
                             <div class="row">
                                 <div class="col-lg-12 text-center md-4">
@@ -55,9 +58,18 @@
                                 @endforeach
                             <p class="lead" >3. Please give us a feedback. (Optional)</p>
                             <textarea title="feedback" name="feedback" class="form-control" rows="3">{{old('feedback')}}</textarea>
-                            <input type="submit" class="button" value="Submit">
+                            @guest
+                                <input type="submit" class="button" value="Submit">
+                            @endguest
+                            @auth
+                                @if(Auth::user()->role->name == 'admin')
+                                    <a href="{{route('admin.index')}}" class="button">Kembali ke Dashboard</a>
+                                @elseif(Auth::user()->role->name == 'supervisor')
+                                    <a href="{{route('spv.index')}}" class="button">Kembali ke Dashboard</a>
+                                @endif
+                            @endauth
 					</form>
-				</div>
+				    </div>
 				</div>
 			</div>
 		</div>
@@ -137,5 +149,5 @@
 
 		SetRatingStar();
     </script>
-	</body>
+</body>
 </html>

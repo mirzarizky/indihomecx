@@ -48,7 +48,7 @@
 
             <h1>Silakan Login</h1>
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-              <input id="email" name="email" type="text" class="form-control" placeholder="NIK / E-mail" value="{{ old('email') }}" required>
+              <input id="email" name="email" type="text" class="form-control" placeholder="NIK / E-mail" value="{{ old('email') }}" required autofocus>
               @if ($errors->has('email'))
                 <span class="help-block">
                 <strong>{{ $errors->first('email') }}</strong>
@@ -85,7 +85,7 @@
             <br />
             <div>
               <center>
-                <img class="logo" src="images/indihome.png" style="width:60%; padding-bottom:20px;" />
+                <img class="logo" src="{{asset('images/indihome.png')}}" style="width:60%; padding-bottom:20px;" />
               </center>
               <p>Telkom Indonesia</p>
             </div>
