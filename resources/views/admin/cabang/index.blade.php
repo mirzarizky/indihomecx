@@ -46,7 +46,7 @@
                     @endforeach
                   </tbody>
                 </table>
-                <form id="hapus" method="get" style="display:none;" action="{{route('admin.model.delete', ['model' => 'sto', 'id' => $sto->id])}}"></form>
+                <form id="hapus" method="get" style="display:none;" action=""></form>
               </div>
             </div>
           </div>
@@ -70,31 +70,10 @@
         return;
       }
       console.log('init_DataTables');
-
-      $('#datatable').dataTable();
-
-      $('#datatable-keytable').DataTable({
-        keys: true
-      });
-
       $('#datatable-responsive').DataTable();
-
-      $('#datatable-scroller').DataTable({
-        ajax: "js/datatables/json/scroller-demo.json",
-        deferRender: true,
-        scrollY: 380,
-        scrollCollapse: true,
-        scroller: true
-      });
-
-      $('#datatable-fixed-header').DataTable({
-        fixedHeader: true
-      });
-
-    };
+    }
 
     // swal Hapus
-
     function hapusFunction(namacabang, actionPath) {
       console.log(actionPath);
       event.preventDefault(); // prevent form submit
@@ -115,7 +94,7 @@
             hapusForm.action = actionPath;
             hapusForm.submit();
           } else {
-            swal("Batal", "STO " +namacabang + " tidak terhapus.",);
+            swal("Batal", "STO " +namacabang + " tidak terhapus.");
           }
         });
     }

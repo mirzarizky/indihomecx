@@ -25,7 +25,7 @@ class KriteriaController extends Controller
     public function create(Request $request) {
 
         $request->validate([
-            'nama' => 'required|string|max:255',
+            'nama' => 'required|string|unique:kriteria|max:255',
         ]);
 
         Kriteria::create([

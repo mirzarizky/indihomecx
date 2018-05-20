@@ -34,8 +34,10 @@
                       <td>{{$order->id}}</td>
                       <td>{{$order->tanggal}}</td>
                       <td>{{$order->namaPelanggan}}</td>
+                        {{--TODO : Status Kode : Kan PS semua?--}}
                       <td>{{$order->status_kode}}</td>
-                      <td>Sukmajaya</td>
+                      <td>{{$order->cabang->nama}}</td>
+                        {{--TODO : Status Survei Please--}}
                       <td>OK</td>
                     </tr>
                     @endforeach
