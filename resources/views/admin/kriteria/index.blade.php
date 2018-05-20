@@ -13,7 +13,7 @@
         <div class="x_panel">
           <div class="row x_title">
             <div class="col-md-6">
-              <h3>Faktor Kepuasan dalam Survei</i></h3>
+              <h3>Faktor Kepuasan dalam Survei</h3>
             </div>
             <div class="col-md-6">
               <div>
@@ -44,7 +44,7 @@
                     @endforeach
                   </tbody>
                 </table>
-                <form id="hapus" method="get" style="display:none;" action="{{route('admin.model.delete', ['model' => 'kriteria', 'id' => $kriteria->id])}}"></form>
+                <form id="hapus" method="get" style="display:none;" action=""></form>
               </div>
             </div>
           </div>
@@ -115,7 +115,7 @@
             hapusForm.action = actionPath;
             hapusForm.submit();
           } else {
-            swal("Batal", username + " tetap menjadi salah satu faktor kepuasan dalam survei.",);
+            swal("Batal", username + " tetap menjadi salah satu faktor kepuasan dalam survei.");
           }
         });
     }

@@ -14,7 +14,7 @@
         <div class="x_panel">
           <div class="row x_title">
             <div class="col-md-6">
-              <h3>Berkas Tersimpan</i></h3>
+              <h3>Berkas Tersimpan</h3>
             </div>
             <div class="col-md-6">
               <div>
@@ -55,6 +55,7 @@
                           </td>
                     <td>
                       <a class="btn btn-dark ftco-animate btn-xs" href="{{route('admin.model.updateForm', ['model' => 'berkas', 'id' => $berkas->id])}}">Ubah</a>
+                        {{--TODO : Berkas Status please--}}
                       @if($berkas->isSent)
                         <a onclick="hapusFunction('{{$berkas->nama}}','{{route('admin.model.delete', ['model' => 'berkas', 'id' => $berkas->id])}}')" class="btn btn-danger ftco-animate btn-xs">Hapus</a>
                         <a onclick="kirimFunction()" class="btn btn-default ftco-animate btn-xs" disabled>Kirim</a>
@@ -62,13 +63,13 @@
                         <a onclick="hapusFunction('{{$berkas->nama}}','{{route('admin.model.delete', ['model' => 'berkas', 'id' => $berkas->id])}}')" class="btn btn-danger ftco-animate btn-xs">Hapus</a>
                         <a onclick="kirimFunction()" class="btn btn-default ftco-animate btn-xs">Kirim</a>
                       @endif
+                    </td>
                   </tr>
                   @endforeach
                 </tbody>
               </table>
               <form id="hapus" method="get" style="display:none;" action=""></form>
               <form id="kirim" method="get" style="display:none;" action="http://google.com"></form>
-            </td>
             </div>
           </div>
         </div>
@@ -137,7 +138,7 @@
             hapusForm.action = actionPath;
             hapusForm.submit();
           } else {
-            swal("Batal", username + " tidak terhapus.",);
+            swal("Batal", username + " tidak terhapus.");
           }
         });
     }

@@ -53,21 +53,25 @@
                   <div class="clearfix"></div>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-6">
-                      @foreach($factors as $factor)
-                        <p>{{$factor->nama}}</p>
-                        <div class="">
-                          <div class="progress progress_sm" style="width: 76%;">
-                            <div class="progress-bar bg-red" role="progressbar" data-transitiongoal="{{($factor->detail->count()/$total['detailFactor']) * 100}}"></div>
-                          </div>
-                        </div>
-                      @endforeach
+                  @foreach($factors as $factor)
+                    <p>{{$factor->nama}}</p>
+                    <div class="">
+                      <div class="progress progress_sm" style="width: 76%;">
+                        @if($factor->detail->count() == 0)
+                          <div class="progress-bar bg-red" role="progressbar" data-transitiongoal="0"></div>
+                        @else
+                          <div class="progress-bar bg-red" role="progressbar" data-transitiongoal="{{($factor->detail->count()/$total['detailFactor']) * 100}}"></div>
+                        @endif
+                      </div>
+                    </div>
+                  @endforeach
                 </div>
               </div>
               <div class="clearfix"></div>
             </div>
           </div>
         </div>
-        <br>
+        <br/>
 
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
@@ -111,11 +115,11 @@
     <br/>
 @endsection
 @section('script')
-    <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-    <script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js"></script>
+    <script src="{{ asset('js/amcharts/amcharts.js') }}"></script>
+    <script src="{{ asset('js/amcharts/pie.js') }}"></script>
     <script src="{{ asset('js/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/datatables/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{asset('js/bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
+    <script src="{{ asset('js/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
     <script type="text/javascript">
         AmCharts.makeChart("chartdiv", {
               "type": "pie",
@@ -159,23 +163,17 @@
                   @foreach($ratings as $rating)
                   {
                       @foreach($rating as $rates)
-                          @if($rates->nilai == 1)
-                              "category": "★",
-                              "column-1": "{!! $rating->count() !!}",
-                          @elseif($rates->nilai == 2)
-                              "category": "★★",
-                              "column-1": "{!! $rating->count() !!}",
-                          @elseif($rates->nilai == 3)
-                              "category": "★★★",
-                              "column-1": "{!! $rating->count() !!}",
-                          @elseif($rates->nilai == 4)
-                              "category": "★★★★",
-                              "column-1": "{!! $rating->count() !!}",
-                          @elseif($rates->nilai == 5)
-                              "category": "★★★★★",
-                              "column-1": "{!! $rating->count() !!}",
-                          @endif
-                          @break
+                        @switch($rates->nilai)
+                          @case(1)
+                          @case(2)
+                          @case(3)
+                          @case(4)
+                          @case(5)
+                            "category": "{{ str_repeat('★', $rates->nilai) }}",
+                            "column-1": "{{ $rating->count() }}",
+                            @break
+                        @endswitch
+                        @break
                       @endforeach
                   },
                   @endforeach

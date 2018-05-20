@@ -64,7 +64,7 @@
                   @endif
                   </tbody>
                 </table>
-                <form id="hapus" method="get" style="display:none;" action="{{route('admin.model.delete', ['model' => 'user', 'id' => $user->id])}}"></form>
+                <form id="hapus" method="get" style="display:none;" action=""></form>
               </div>
             </div>
           </div>
@@ -79,42 +79,11 @@
 <script src="{{ asset('js/datatables/dataTables.bootstrap.min.js') }}"></script>
 <script src="{{asset('js/sweetalert/sweetalert.min.js')}}"></script>
 <script type="text/javascript">
-    //Table
     function init_DataTables() {
-
-      // console.log('run_datatables');
-
-      // if (typeof($.fn.DataTable) === 'undefined') {
-      //   return;
-      // }
-      // console.log('init_DataTables');
-
-      // $('#datatable').dataTable();
-
-      // $('#datatable-keytable').DataTable({
-      //   keys: true
-      // });
-
-      $('#datatable-responsive').DataTable();
-
-      // $('#datatable-scroller').DataTable({
-      //   ajax: "js/datatables/json/scroller-demo.json",
-      //   deferRender: true,
-      //   scrollY: 380,
-      //   scrollCollapse: true,
-      //   scroller: true
-      // });
-
-      // $('#datatable-fixed-header').DataTable({
-      //   fixedHeader: true
-      // });
-
+        $('#datatable-responsive').DataTable();
     }
 
-    // swal Hapus
-
     function hapusFunction(username, actionPath) {
-      // console.log(actionPath);
       event.preventDefault(); // prevent form submit
       swal({
           title: "Hapus " + username + "?",

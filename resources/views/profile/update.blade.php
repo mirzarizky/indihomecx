@@ -13,92 +13,89 @@
           <div class="x_content">
             <div class="container">
               <div class="row">
-                <!-- left column -->
-
                 <!-- edit form column -->
                 <form id="form-valid" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="{{route('profile.update')}}" enctype="multipart/form-data">
-                  {{ csrf_field() }}
-                  <div class="col-md-3">
-                    <div class="text-center">
-                      <img class="img-responsive avatar-view" src="@if(!is_null($user->avatar_id)) {{asset('storage/'.''.$user->avatar->path)}} @else {{ asset('images/user.png') }} @endif" alt="Avatar" title="Avatar" style="width:250px">
-                      <br>
-                      <label for="photoInput" class="btn btn-default btn-file" style="cursor: pointer;">
-                          Ganti Foto Profil <input type="file" name="photo" id="photoInput" style="display: none;" accept=".png,.jpg,.jpeg">
-                      </label>
-                      @if ($errors->has('photo'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('photo') }}</strong>
-                      </span>
-                      @endif
-                      <output id="filesInfo"></output>
-                    </div>
-                  </div>
-                <div class="col-md-9">
-                    <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
-                      <label for="role" class="col-lg-3 control-label">Hak Akses:</label>
-                        <div class="col-lg-8">
-                          <input id="role" type="text" class="form-control" name="role" value="@if ($user->role->name == 'admin')Administrator @else Supervisor @endif" readonly>
-                          @if ($errors->has('role'))
-                              <span class="help-block">
-                              <strong>{{ $errors->first('role') }}</strong>
+                    {{ csrf_field() }}
+                    <div class="col-md-3">
+                        <div class="text-center">
+                          <img class="img-responsive avatar-view" src="@if(!is_null($user->avatar_id)) {{asset('storage/'.''.$user->avatar->path)}} @else {{ asset('images/user.png') }} @endif" alt="Avatar" title="Avatar" style="width:250px">
+                          <br>
+                          <label for="photoInput" class="btn btn-default btn-file" style="cursor: pointer;">
+                              Ganti Foto Profil <input type="file" name="photo" id="photoInput" style="display: none;" accept=".png,.jpg,.jpeg">
+                          </label>
+                          @if ($errors->has('photo'))
+                          <span class="help-block">
+                              <strong>{{ $errors->first('photo') }}</strong>
                           </span>
                           @endif
+                          <output id="filesInfo"></output>
                         </div>
                     </div>
-                    <div class="form-group{{ $errors->has('nik') ? ' has-error' : '' }}">
-                      <label for="kode" class="col-lg-3 control-label">NIK:</label>
-                      <div class="col-lg-8">
-                        <input id="kode" class="form-control" type="text" name="kode" value="{{ $user->nik }}" readonly>
-                            @if ($errors->has('nik'))
-                              <span class="help-block">
-                                <strong>{{ $errors->first('nik') }}</strong>
+                    <div class="col-md-9">
+                        <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
+                          <label for="role" class="col-lg-3 control-label">Hak Akses:</label>
+                            <div class="col-lg-8">
+                              <input id="role" type="text" class="form-control" name="role" value="@if ($user->role->name == 'admin')Administrator @else Supervisor @endif" readonly>
+                              @if ($errors->has('role'))
+                                  <span class="help-block">
+                                  <strong>{{ $errors->first('role') }}</strong>
                               </span>
-                            @endif
-                      </div>
+                              @endif
+                            </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('nik') ? ' has-error' : '' }}">
+                          <label for="kode" class="col-lg-3 control-label">NIK:</label>
+                          <div class="col-lg-8">
+                            <input id="kode" class="form-control" type="text" name="kode" value="{{ $user->nik }}" readonly>
+                                @if ($errors->has('nik'))
+                                  <span class="help-block">
+                                    <strong>{{ $errors->first('nik') }}</strong>
+                                  </span>
+                                @endif
+                          </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
+                          <label for="nama" class="col-lg-3 control-label">Nama:</label>
+                          <div class="col-lg-8">
+                            <input id="nama" type="text" placeholder="Nama Lengkap" class="form-control" name="nama" value="{{ $user->name }}" required data-parsley-error-message="Nama harus diisi.">
+                                @if ($errors->has('nama'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('nama') }}</strong>
+                                  </span>
+                                @endif
+                          </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                          <label for="email" class="col-lg-3 control-label">Email:</label>
+                          <div class="col-lg-8">
+                            <input id="email" type="email" placeholder="Alamat Email" class="form-control" name="email" value="{{ $user->email }}" data-parsley-type="email" required data-parsley-error-message="Harus diisi dengan email yang valid.">
+                              @if ($errors->has('email'))
+                                  <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                        </div>
+                        <div class="form-group{{ $errors->has('noHp') ? ' has-error' : '' }}">
+                          <label for="noHp" class="col-md-3 control-label">No telp:</label>
+                          <div class="col-md-8">
+                            <input id="noHp" type="text" class="form-control" placeholder="Nomor Hp" name="noHp" value="{{ $user->noHp }}">
+                              @if ($errors->has('noHp'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('noHp') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-3 control-label"></label>
+                          <div class="col-md-8">
+                              <button type="submit" class="btn btn-danger ftco-animate">Simpan Perubahan</button>
+                              <button type="reset" onclick="back()" class="btn btn-default ftco-animate">Batal</button>
+                          </div>
+                        </div>
                     </div>
-                    <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
-                      <label for="nama" class="col-lg-3 control-label">Nama:</label>
-                      <div class="col-lg-8">
-                        <input id="nama" type="text" placeholder="Nama Lengkap" class="form-control" name="nama" value="{{ $user->name }}" required data-parsley-error-message="Nama harus diisi.">
-                            @if ($errors->has('nama'))
-                              <span class="help-block">
-                                  <strong>{{ $errors->first('nama') }}</strong>
-                              </span>
-                            @endif
-                      </div>
-                    </div>
-                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                      <label for="email" class="col-lg-3 control-label">Email:</label>
-                      <div class="col-lg-8">
-                        <input id="email" type="email" placeholder="Alamat Email" class="form-control" name="email" value="{{ $user->email }}" data-parsley-type="email" required data-parsley-error-message="Harus diisi dengan email yang valid.">
-                          @if ($errors->has('email'))
-                              <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
-                              </span>
-                          @endif
-                      </div>
-                    </div>
-                    <div class="form-group{{ $errors->has('noHp') ? ' has-error' : '' }}">
-                      <label for="noHp" class="col-md-3 control-label">No telp:</label>
-                      <div class="col-md-8">
-                        <input id="noHp" type="text" class="form-control" placeholder="Nomor Hp" name="noHp" value="{{ $user->noHp }}">
-                          @if ($errors->has('noHp'))
-                              <span class="help-block">
-                                  <strong>{{ $errors->first('noHp') }}</strong>
-                              </span>
-                          @endif
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="col-md-3 control-label"></label>
-                      <div class="col-md-8">
-                        <button type="submit" class="btn btn-danger ftco-animate">Simpan Perubahan
-                        <span></span>
-                        <button type="reset" onclick="back()" class="btn btn-default ftco-animate">Batal
-                      </div>
-                    </div>
-                  </form>
-                </div>
+                </form>
               </div>
             </div>
           </div>
