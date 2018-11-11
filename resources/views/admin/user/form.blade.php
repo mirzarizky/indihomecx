@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Tambah User')
+@section('title', 'Tambah Pengguna')
 @section('content')
 <div class="right_col" role="main">
   <div class="">
@@ -7,7 +7,7 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h3>Tambah User</h3>
+            <h3>Tambah Pengguna</h3>
             <div class="clearfix"></div>
               @if (session('status'))
               <div class="alert alert-info alert-dismissible fade in">
