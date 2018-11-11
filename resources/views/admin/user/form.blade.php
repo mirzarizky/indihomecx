@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Tambah Pengguna')
+@section('')
+	<link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+@endsection
 @section('content')
 <div class="right_col" role="main">
   <div class="">
@@ -24,8 +27,8 @@
                     {{ csrf_field() }}
 
                     <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
-                      <label for="role" class="col-lg-3 control-label">Hak Akses: *</label>
-                      <div class="col-lg-6">
+                      <label for="role" class="control-label col-md-3 col-sm-3 col-xs-12">Hak Akses<span class="required">*</span></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="ui-select">
                           <select id="role" name="role" class="form-control" required data-parsley-error-message="Harus dipilih salah satu.">
                               <option value="">---Role---</option>
@@ -42,8 +45,8 @@
                       </div>
                     </div>
                     <div class="form-group{{ $errors->has('nik') ? ' has-error' : '' }}">
-                      <label for="nik" class="col-lg-3 control-label">NIK: *</label>
-                      <div class="col-lg-6">
+                      <label for="nik" class="control-label col-md-3 col-sm-3 col-xs-12">NIK<span class="required">*</span></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="nik" name="nik" class="form-control" data-parsley-pattern="[0-9]{7}" value="" required="required" data-parsley-error-message="NIK harus diisi dengan angka dan terdiri dari 7 karakter.">
                           @if ($errors->has('nik'))
                               <span class="help-block">
@@ -53,9 +56,9 @@
                       </div>
                     </div>
                     <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
-                      <label for="nama" class="col-lg-3 control-label">Nama: *</label>
-                      <div class="col-lg-6">
-                        <input id="nama" class="form-control" type="text" name="nama" value="{{ old('nama') }}" required>
+                      <label for="nama" class="control-label col-md-3 col-sm-3 col-xs-12">Nama<span class="required">*</span></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="nama" class="form-control" type="text" name="nama" value="{{ old('nama') }}" required data-parsley-error-message="Nama harus diisi.">
                           @if ($errors->has('nama'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('nama') }}</strong>
@@ -64,9 +67,9 @@
                       </div>
                     </div>
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                      <label for="email" class="col-lg-3 control-label">Email: *</label>
-                      <div class="col-lg-6">
-                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" data-parsley-type="email" required="required" data-parsley-error-message="Harus diisi dengan email yang valid.">
+                      <label for="email" class="control-label col-md-3 col-sm-3 col-xs-12">Email<span class="required">*</span></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" data-parsley-type="email" required="required" data-parsley-error-message="Email harus diisi dengan email yang valid.">
                           @if ($errors->has('email'))
                               <span class="help-block">
                               <strong>{{ $errors->first('email') }}</strong>
@@ -75,9 +78,9 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="col-md-3 control-label"></label>
-                      <div class="col-md-6">
-                        <button type="submit" class="btn btn-danger ftco-animate">Tambah User
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <button type="submit" class="btn btn-danger ftco-animate">Tambah Pengguna
                         <span></span>
                         <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate">Batal
                       </div>

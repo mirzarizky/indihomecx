@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Dashboard')
+@section('')
+	<link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+@endsection
 @section('content')
 <div class="right_col" role="main">
   <div class="">

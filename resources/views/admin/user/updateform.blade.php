@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Ubah User')
+@section('')
+	<link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+@endsection
 @section('content')
 <div class="right_col" role="main">
   <div class="">
@@ -7,7 +10,7 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h3>Ubah Pengguna</h3>
+            <h3>Ubah Informasi Pengguna</h3>
             <div class="clearfix"></div>
               @if (session('status'))
               <div class="alert alert-info alert-dismissible fade in">
@@ -16,6 +19,7 @@
               </div>
               @endif
           </div>
+          <center>
             <div class="x_content">
               <div class="container">
                 <div class="row">
@@ -24,8 +28,8 @@
                     {{ csrf_field() }}
 
                     <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
-                      <label for="role" class="col-lg-3 control-label">Hak Akses: </label>
-                      <div class="col-lg-6">
+                      <label for="role" class="control-label col-md-3 col-sm-3 col-xs-12">Hak Akses: </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="ui-select">
                           <select id="role" name="role" class="form-control" required data-parsley-error-message="Harus dipilih salah satu.">
                             <option value="{{$user->role_id}}">{{$user->role->name}}</option>
@@ -43,8 +47,8 @@
                     </div>
 
                     <div class="form-group{{ $errors->has('nik') ? ' has-error' : '' }}">
-                      <label for="kode" class="col-lg-3 control-label">NIK: </label>
-                      <div class="col-lg-6">
+                      <label for="kode" class="control-label col-md-3 col-sm-3 col-xs-12">NIK: </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="kode" name="kode" value="{{ $user->nik }}" class="form-control" readonly>
                           @if ($errors->has('nik'))
                               <span class="help-block">
@@ -54,8 +58,8 @@
                       </div>
                     </div>
                     <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
-                      <label for="nama" class="col-lg-3 control-label">Nama: </label>
-                      <div class="col-lg-6">
+                      <label for="nama" class="control-label col-md-3 col-sm-3 col-xs-12">Nama: </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="nama" class="form-control" type="text" name="nama" value="{{ $user->name }}" required>
                           @if ($errors->has('nama'))
                               <span class="help-block">
@@ -65,8 +69,8 @@
                       </div>
                     </div>
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                      <label for="email" class="col-lg-3 control-label">Email: </label>
-                      <div class="col-lg-6">
+                      <label for="email" class="control-label col-md-3 col-sm-3 col-xs-12">Email: </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="email" type="email" class="form-control" name="email" value="{{ $user->email }}" data-parsley-type="email" required="required" data-parsley-error-message="Harus diisi dengan email yang valid.">
                           @if ($errors->has('email'))
                               <span class="help-block">
@@ -76,8 +80,8 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="col-md-3 control-label"></label>
-                      <div class="col-md-6">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
                         <button type="submit" class="btn btn-danger ftco-animate"> Simpan Perubahan </button>
                         <span></span>
                         <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate">Batal </button>

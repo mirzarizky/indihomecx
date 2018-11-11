@@ -10,11 +10,7 @@
 
   <title>Login</title>
 
-  <!-- Bootstrap -->
   <link href="{{asset('css/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <!-- NProgress -->
-  <link href="{{asset('css/nprogress/nprogress.css')}}" rel="stylesheet">
-  <!-- Custom Theme Style -->
   <link href="{{asset('css/custom.css')}}" rel="stylesheet">
   <style media="screen">
     h1 {
@@ -46,7 +42,7 @@
           <form class="form-horizontal" method="POST" action="{{ route('login.post') }}">
             {{ csrf_field() }}
 
-            <h1>Silakan Login</h1>
+            <h1>Login I-CX</h1>
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
               <input id="email" name="email" type="text" class="form-control" placeholder="NIK / E-mail" value="{{ old('email') }}" required autofocus>
               @if ($errors->has('email'))
@@ -95,8 +91,6 @@
     </div>
   </div>
 
-  <!-- NProgress -->
-  <script src="{{asset('js/nprogress/nprogress.js')}}"></script>
 </body>
 
 </html>
