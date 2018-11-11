@@ -13,7 +13,7 @@
         <div class="x_panel">
           <div class="row x_title">
             <div class="col-md-6">
-              <h3>Daftar <i>User</i></h3>
+              <h3>Daftar Pengguna</h3>
             </div>
             <div class="col-md-6">
               <div>
@@ -59,7 +59,7 @@
                     @endforeach
                   @else
                       <tr>
-                          <td colspan="5">Tidak ada User dalam database</td>
+                          <td colspan="5">Tidak ada pengguna yang terdaftar dalam sistem.</td>
                       </tr>
                   @endif
                   </tbody>

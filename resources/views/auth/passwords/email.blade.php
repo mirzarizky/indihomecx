@@ -12,11 +12,7 @@
 
     <title>Forgot Password</title>
 
-    <!-- Bootstrap -->
-    <link href="{{asset('css/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="{{asset('css/nprogress/nprogress.css')}}" rel="stylesheet">
-    <!-- Custom Theme Style -->
+    <link href="{{asset('css/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">>
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
     <style media="screen">
         h1 {
@@ -48,7 +44,7 @@
                 <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
                     {{ csrf_field() }}
 
-                    <h1>Reset Password</h1>
+                    <h1> Reset Password </h1>
                     @if (session('status'))
                         <span class="help-block">
                             {{ session('status') }}
@@ -65,7 +61,7 @@
                     <div class="form-group">
                         <div>
                             <button type="submit" class="btn btn-danger ftco-animate">
-                                Send Password Reset Link
+                                Atur Ulang Password Saya
                             </button>
                         </div>
                     </div>
@@ -88,6 +84,5 @@
 </div>
 
 <!-- NProgress -->
-<script src="{{asset('js/nprogress/nprogress.js')}}"></script>
 </body>
 </html>
