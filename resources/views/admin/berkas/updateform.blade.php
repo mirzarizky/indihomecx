@@ -21,6 +21,7 @@
               @endif
 
             </div>
+            <center>
             <div class="x_content">
               <div class="container">
                 <div class="row">
@@ -28,9 +29,9 @@
                     {{ csrf_field() }}
 
                     <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
-                      <label for="nama" class="col-lg-3 control-label">Nama Berkas:</label>
+                      <label for="nama" class="control-label col-md-3 col-sm-3 col-xs-12">Nama Berkas:</label>
 
-                          <div class="col-lg-6">
+                          <div class="col-md-6 col-sm-6 col-xs-12">
                             <input id="nama" type="text" class="form-control" name="nama" value="{{ $berkas->nama }}" required data-parsley-error-message="Nama harus diisi.">
 
                             @if ($errors->has('nama'))
@@ -42,8 +43,8 @@
                         </div>
 
                     <div class="form-group{{ $errors->has('daterange') ? ' has-error' : '' }}">
-                      <label for="daterange" class="col-lg-3 control-label">Tanggal:</label>
-                        <div class="col-lg-6">
+                      <label for="daterange" class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal:</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="input-prepend input-group">
                               <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
                               <input type="text" id="daterange" name="daterange" class="form-control daterange">
@@ -58,8 +59,8 @@
 
                     <center>
                       <div class="form-group">
-                        <label class="col-md-3 control-label"></label>
-                        <div class="col-md-6">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                           <button type="submit" class="btn btn-danger ftco-animate">Simpan Perubahan
                             <span></span>
                           <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate">Batal
