@@ -26,7 +26,7 @@
                 <table class="table table-striped table-vcenter" cellspacing="0" align="center">
                   <thead>
                     <tr>
-                      <th class="text-center">Faktor Kepuasan</th>
+                      <th>Faktor Kepuasan</th>
                       <th class="text-center" style="width:20%">Tindakan</th>
                     </tr>
                   </thead>

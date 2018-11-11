@@ -26,8 +26,8 @@
                 <table id="datatable-responsive" class="table table-striped table-vcenter" cellspacing="0" width="100%" alignright>
                   <thead>
                     <tr>
-                      <th class="text-center">Kode STO</th>
-                      <th class="text-center">Nama STO</th>
+                      <th>Kode STO</th>
+                      <th>Nama STO</th>
                       <th class="text-center" style="width:20%">Tindakan</th>
                     </tr>
                   </thead>
