@@ -7,7 +7,7 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h3>Ubah Cabang</h3>
+            <h3>Ubah STO</h3>
             <div class="clearfix"></div>
           </div>
           <center>
@@ -17,8 +17,8 @@
                   <form id="form-valid" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="{{route('admin.model.update', ['model' => 'sto', 'id' => $cabang->id])}}">
                     {{ csrf_field() }}
                     <div class="form-group{{ $errors->has('kode') ? ' has-error' : '' }}">
-                      <label class="col-lg-3 control-label">Kode STO: *</label>
-                      <div class="col-lg-6">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Kode STO<span class="required">*</span></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="kode" name="kode" class="form-control" type="text" value="{{ $cabang->kode }}" required data-parsley-error-message="Kode STO harus diisi.">
                         @if ($errors->has('kode'))
                             <span class="help-block">
@@ -26,10 +26,11 @@
                             </span>
                         @endif
                       </div>
+                      <center>
                     </div>
                     <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
-                      <label class="col-lg-3 control-label">Nama STO: *</label>
-                      <div class="col-lg-6">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama STO<span class="required">*</span></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="nama" name="nama" class="form-control" type="text" value="{{ $cabang->nama }}" required data-parsley-error-message="Nama STO harus diisi.">
                         @if ($errors->has('nama'))
                               <span class="help-block">
@@ -40,8 +41,8 @@
                     </div>
                     </div>
                     <div class="form-group">
-                      <label class="col-md-3 control-label"></label>
-                      <div class="col-md-6">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
                         <button type="submit" class="btn btn-danger ftco-animate">Simpan Perubahan
                         <span></span>
                         <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate">Batal
