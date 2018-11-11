@@ -10,20 +10,20 @@
             <h3>Ubah Password</h3>
             <div class="clearfix"></div>
           </div>
-          <div class="panel-body">
+          <center class="panel-body">
                   @if (session('status'))
                       <div class="alert alert-success">
                           {{ session('status') }}
                       </div>
                   @endif
-          <center>
+          </center>
             <div class="x_content">
               <div class="container">
                 <div class="row">
                   <form class="form-horizontal" data-parsley-validate role="form" method="POST" action="{{ route('profile.password.update') }}">
                     {{ csrf_field() }}
                     <div class="form-group{{ $errors->has('oldPassword') ? ' has-error' : '' }}">
-                      <label for="oldPassword" class="col-md-3 control-label">Password Lama:</label>
+                      <label for="oldPassword" class="col-md-3 control-label">Password Lama :</label>
                       <div class="col-md-8">
                         <input id="oldPassword" type="password" class="form-control" name="oldPassword" data-parsley-error-message="Password lama harus diisi." required>
                             @if ($errors->has('oldPassword'))
@@ -34,7 +34,7 @@
                       </div>
                     </div>
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                      <label for="password" class="col-md-3 control-label">Password Baru:</label>
+                      <label for="password" class="col-md-3 control-label">Password Baru :</label>
                       <div class="col-md-8">
                         <input id="password" type="password" class="form-control" name="password" autofocus="autofocus" required data-parsley-error-message="Password baru harus diisi.">
                           @if ($errors->has('password'))
@@ -45,7 +45,7 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="password-confirm" class="col-md-3 control-label">Konfirmasi Password Baru:</label>
+                      <label for="password-confirm" class="col-md-3 control-label">Konfirmasi Password Baru :</label>
                       <div class="col-md-8">
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required data-parsley-equalto="#password" data-parsley-error-message="Password tidak sama.">
                       </div>
@@ -64,8 +64,7 @@
               </div>
               </hr>
               <div class="clearfix"></div>
-              <br>
-            </div>
+              <br/>
         </div>
       </div>
     </div>
