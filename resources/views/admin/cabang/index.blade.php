@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-6">
               <div>
-                <a href="{{route('admin.model.form', ['model' => 'sto'])}}" class="btn btn-default ftco-animate pull-right fa fa-plus-square" style="padding: 14px 20px; font-size: 15px;"> &nbsp &nbsp Tambah STO </a>
+                <a href="{{route('admin.model.form', ['model' => 'sto'])}}" class="btn btn-default ftco-animate pull-right" style="padding: 14px 20px; font-size: 15px;"> <i class="fa fa-plus-square"></i> &nbsp &nbsp Tambah STO </a>
               </div>
             </div>
           </div>
@@ -26,8 +26,8 @@
                 <table id="datatable-responsive" class="table table-striped table-vcenter" cellspacing="0" width="100%" alignright>
                   <thead>
                     <tr>
-                      <th class="text-center">Kode STO</th>
-                      <th class="text-center">Nama STO</th>
+                      <th>Kode STO</th>
+                      <th>Nama STO</th>
                       <th class="text-center" style="width:20%">Tindakan</th>
                     </tr>
                   </thead>

@@ -24,9 +24,9 @@
                   <form class="form-horizontal" method="POST" action="{{ route('admin.model.create', ['model' => 'berkas']) }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
-                    <div class="form-group{{ $errors->has('daterange') ? ' has-error' : '' }}">
-                    <label for="daterange" class="col-lg-3 control-label">Tanggal:</label>
-                    <div class="col-lg-6">
+                      <div class="form-group{{ $errors->has('daterange') ? ' has-error' : '' }}">
+                    <label for="daterange" class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal:</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
                       <div class="input-prepend input-group">
                         <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
                         <input type="text" id="daterange" name="daterange" class="form-control daterange">
@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="form-group {{ !$errors->has('berkas') ?: 'has-error' }}">
-                      <label for="berkas" class="col-lg-3 control-label">Berkas:</label>
+                      <label for="berkas" class="control-label col-md-3 col-sm-3 col-xs-12">Berkas:</label>
                       <label class="btn btn-default btn-file" style="margin-left:10px"> Pilih Berkas untuk di Upload<br />
                         <input id="berkas" type="file" class="btn btn-default btn-file" name="berkas" accept=".xlsx, .xls"/>
                       </label>
@@ -53,13 +53,13 @@
                     </div>
 
                     <div class="form-group">
-                      <label class="col-lg-3 control-label" style="margin-left:10px"></label>
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" style="margin-left:10px"></label>
                       <output id="filesInfo"></output>
                     </div>
 
                   <div class="form-group{{ $errors->has('send') ? ' has-error' : '' }}">
-                      <label for="daterange" class="col-lg-3 control-label"></label>
-                      <div class="col-lg-6">
+                      <label for="daterange" class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
                           <div class="input-prepend input-group">
                               <input type="checkbox" name="send" checked{{ old('remember') ? 'checked' : '' }}> Kirim Langsung
                           </div>
@@ -71,8 +71,8 @@
 
                     <center>
                       <div class="form-group">
-                        <label class="col-md-3 control-label"></label>
-                        <div class="col-md-6">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <button type="submit" class="btn btn-danger ftco-animate">Tambah Berkas</button>
                           <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate">Batal</button>
                         </div>

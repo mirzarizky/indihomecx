@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-6">
               <div>
-                <a href="{{route('admin.model.form', ['model' => 'user'])}}" class="btn btn-default ftco-animate pull-right fa fa-plus-square" style="padding: 14px 20px; font-size: 15px;"> &nbsp &nbsp Tambah User </a>
+                <a href="{{route('admin.model.form', ['model' => 'user'])}}" class="btn btn-default ftco-animate pull-right" style="padding: 14px 20px; font-size: 15px;"> <i class="fa fa-plus-square"></i> &nbsp &nbsp Tambah User </a>
               </div>
             </div>
           </div>
@@ -37,7 +37,7 @@
                   @if(!empty($users))
                     @foreach($users as $user)
                     <tr>
-                      <td>{{$user->nik}}</td>
+                      <td class="text-center">{{$user->nik}}</td>
                       <td>{{$user->name}}</td>
                       <td>{{$user->email}}</td>
                       <td class="text-center">
@@ -47,7 +47,7 @@
                         <span class="label label-primary">Supervisor</span>
                         @endif
                       </td>
-                      <td>
+                      <td class="text-center">
                           @if ($user->role->name == 'supervisor')
                             <center>
                               <a href="{{route('admin.model.updateForm', ['model' => 'user', 'id' => $user->id])}}" class="btn-xs btn btn-dark ftco-animate">Ubah</a>

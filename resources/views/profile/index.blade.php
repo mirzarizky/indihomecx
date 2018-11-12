@@ -36,7 +36,7 @@
                   <h5>{{$user->noHp}}</h5>
                   <br>
                   <p>
-                    <a href="{{ route('profile.edit') }}" class="btn btn-danger ftco-animate">Edit Profile</a>
+                    <a href="{{ route('profile.edit') }}" class="btn btn-danger ftco-animate">Ubah Profile</a>
                     <a href="{{ route('profile.password') }}" class="btn btn-danger ftco-animate">Ubah Password</a>
                   </p>
               </div>

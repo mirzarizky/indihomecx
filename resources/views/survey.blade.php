@@ -28,15 +28,15 @@
 		<div class="container">
 			<div class="row justify-content-center mb-5">
 				<div class="col-md-12 text-center mb-5 probootstrap-animate">
-					<h2 class="display-5 probootstrap-section-heading text-center">Customer Satisfaction Survey</h2>
-					<p class="border-bottom text-center">Please help us improve our service by completing this survey.</p>
+					<h2 class="display-5 probootstrap-section-heading text-center">Survei Kepuasan Pelanggan IndiHome	</h2>
+					<p class="border-bottom text-center">Mohon bantu kami meningkatkan layanan kami dengan menyelesaikan survei ini.</p>
 					<div style="text-align:left">
 						<form action="{{ route('survei.post') }}" method="post">
                             @guest
 							{{csrf_field()}}
                             <input type="hidden" name="order_id" value="{{$order_id}}">
                             @endguest
-                            <p class="lead">1. Please rate our service.</p>
+                            <p class="lead">Silakan berikan penilayan untuk layanan kami.</p>
                             <div class="row">
                                 <div class="col-lg-12 text-center md-4">
                                     <div class="star-rating">
@@ -49,14 +49,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="lead">2. Please select your satisfaction factors.</p>
+                            <p class="lead">Silakan pilih faktor kepuasan anda dari layanan kami.</p>
                                 @foreach($allFactor as $factor)
                                     <div class="checkbox checkbox-danger">
                                         <input id="checkbox{{$factor->id}}" value="{{$factor->id}}" type="checkbox" name="factors[]" {{ (is_array(old('factors')) && in_array($factor->id, old('factors'))) ? ' checked' : '' }}>
                                         <label for="checkbox{{$factor->id}}">{{$factor->nama}}</label>
                                     </div>
                                 @endforeach
-                            <p class="lead" >3. Please give us a feedback. (Optional)</p>
+                            <p class="lead" >Silakan berikan komentar dan saran terhadap layanan kami. (Optional)</p>
                             <textarea title="feedback" name="feedback" class="form-control" rows="3">{{old('feedback')}}</textarea>
                             @guest
                                 <input type="submit" class="button" value="Submit">

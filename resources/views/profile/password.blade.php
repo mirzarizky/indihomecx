@@ -23,8 +23,13 @@
                   <form class="form-horizontal" data-parsley-validate role="form" method="POST" action="{{ route('profile.password.update') }}">
                     {{ csrf_field() }}
                     <div class="form-group{{ $errors->has('oldPassword') ? ' has-error' : '' }}">
+<<<<<<< HEAD
+                      <label for="oldPassword" class="col-md-3 col-sm-3 col-xs-12 control-label">Password Lama:</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+=======
                       <label for="oldPassword" class="col-md-3 control-label">Password Lama :</label>
                       <div class="col-md-8">
+>>>>>>> c97ddeca7028e88008193bd28eaf0a65200003de
                         <input id="oldPassword" type="password" class="form-control" name="oldPassword" data-parsley-error-message="Password lama harus diisi." required>
                             @if ($errors->has('oldPassword'))
                                 <span class="help-block">
@@ -34,8 +39,13 @@
                       </div>
                     </div>
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+<<<<<<< HEAD
+                      <label for="password" class="col-md-3 col-sm-3 col-xs-12 control-label">Password Baru:</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+=======
                       <label for="password" class="col-md-3 control-label">Password Baru :</label>
                       <div class="col-md-8">
+>>>>>>> c97ddeca7028e88008193bd28eaf0a65200003de
                         <input id="password" type="password" class="form-control" name="password" autofocus="autofocus" required data-parsley-error-message="Password baru harus diisi.">
                           @if ($errors->has('password'))
                               <span class="help-block">
@@ -45,14 +55,19 @@
                       </div>
                     </div>
                     <div class="form-group">
+<<<<<<< HEAD
+                      <label for="password-confirm" class="col-md-3 col-sm-3 col-xs-12 control-label">Konfirmasi Password Baru:</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+=======
                       <label for="password-confirm" class="col-md-3 control-label">Konfirmasi Password Baru :</label>
                       <div class="col-md-8">
+>>>>>>> c97ddeca7028e88008193bd28eaf0a65200003de
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required data-parsley-equalto="#password" data-parsley-error-message="Password tidak sama.">
                       </div>
                     </div>
                       <div class="form-group">
-                        <label class="col-md-3 control-label"></label>
-                        <div class="col-md-8">
+                        <label class="col-md-3 col-sm-3 col-xs-12 control-label"></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                           <button type="submit" class="btn btn-danger ftco-animate">Save Changes</button>
                           <span></span>
                           <button type="reset" href="{{route('profile.index')}}" class="btn btn-default ftco-animate"> Cancel </button>

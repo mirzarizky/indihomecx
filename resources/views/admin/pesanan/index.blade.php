@@ -32,13 +32,19 @@
                     @foreach($orders as $order)
                     <tr>
                       <td>{{$order->id}}</td>
-                      <td>{{$order->tanggal}}</td>
+                      <td class="text-center">{{$order->tanggal}}</td>
                       <td>{{$order->namaPelanggan}}</td>
+<<<<<<< HEAD
+                      <td class="text-center">{{$order->status_kode}}</td>
+                      <td class="text-center">Sukmajaya</td>
+                      <td class="text-center">OK</td>
+=======
                         {{--TODO : Status Kode : Kan PS semua?--}}
                       <td>{{$order->status_kode}}</td>
                       <td>{{$order->cabang->nama}}</td>
                         {{--TODO : Status Survei Please--}}
                       <td>OK</td>
+>>>>>>> c97ddeca7028e88008193bd28eaf0a65200003de
                     </tr>
                     @endforeach
                   </tbody>

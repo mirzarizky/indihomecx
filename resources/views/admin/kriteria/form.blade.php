@@ -18,8 +18,8 @@
                     {{ csrf_field() }}
 
                     <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
-                      <label for="nama" class="col-md-3 control-label">Faktor Kepuasan: *</label>
-                      <div class="col-md-6">
+                      <label for="nama" class="control-label col-md-3 col-sm-3 col-xs-12">Faktor Kepuasan<span>*</span></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
                         <input id="nama" name="nama" class="form-control" type="text" value="{{ old('nama') }}" required data-parsley-error-message="Harus diisi.">
                           @if ($errors->has('nama'))
                               <span class="help-block">
@@ -29,8 +29,8 @@
                       </div>
                     </div>
                       <div class="form-group">
-                        <label class="col-md-3 control-label"></label>
-                        <div class="col-md-6">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                           <button type="submit" class="btn btn-danger ftco-animate">Tambah Faktor
                           <span></span>
                           <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate"> Batal
