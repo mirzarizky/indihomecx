@@ -10,7 +10,11 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="shortcut icon" href="{{asset('images/logoindi.png')}}">
+
+
   <title>@yield('title')</title>
+
 
   <!-- Bootstrap -->
   <link href="{{asset('css/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">

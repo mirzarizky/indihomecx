@@ -18,7 +18,7 @@
             </div>
             <div class="col-md-6">
               <div>
-                <a href="{{route('admin.model.form', ['model' => 'berkas'])}}" class="btn btn-default ftco-animate pull-right fa fa-plus-square" style="padding: 14px 20px; font-size: 15px;"> &nbsp &nbsp Tambah Berkas </a>
+                <a href="{{route('admin.model.form', ['model' => 'berkas'])}}" class="btn btn-default ftco-animate pull-right" style="padding: 14px 20px; font-size: 15px;"> <i class="fa fa-plus-square"></i> &nbsp &nbsp Tambah Berkas </a>
               </div>
             </div>
           </div>
@@ -41,12 +41,12 @@
                   @foreach($allBerkas as $berkas)
                   <tr>
                     <td>{{$berkas->nama}}</td>
-                    <td>{{$berkas->tanggalMulaiPesanan}}</td>
-                    <td>{{$berkas->tanggalAkhirPesanan}}</td>
-                    <td>{{$berkas->totalNoHp}}</td>
-                    <td>{{$berkas->totalEmail}}</td>
-                    <td>{{$berkas->totalPesanan}}</td>
-                    <td>
+                    <td class="text-center">{{$berkas->tanggalMulaiPesanan}}</td>
+                    <td class="text-center">{{$berkas->tanggalAkhirPesanan}}</td>
+                    <td class="text-center">{{$berkas->totalNoHp}}</td>
+                    <td class="text-center">{{$berkas->totalEmail}}</td>
+                    <td class="text-center">{{$berkas->totalPesanan}}</td>
+                    <td class="text-center">
                       @if($berkas->isSent)
                         <span class="label label-success">Terkirim</span>
                       @else

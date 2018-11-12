@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-6">
               <div>
-                <a href="{{route('admin.model.form', ['model' => 'kriteria'])}}" class="btn btn-default ftco-animate pull-right fa fa-plus-square" style="padding: 14px 20px; font-size: 15px;"> &nbsp &nbsp Tambah Faktor Kepuasan </a>
+                <a href="{{route('admin.model.form', ['model' => 'kriteria'])}}" class="btn btn-default ftco-animate pull-right" style="padding: 14px 20px; font-size: 15px;"> <i class="fa fa-plus-square"></i> &nbsp &nbsp Tambah Faktor Kepuasan </a>
               </div>
             </div>
           </div>
