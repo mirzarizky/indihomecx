@@ -132,7 +132,6 @@
                 "#B9BAA3",
                 "#D6D5C9",
                 "#E72222"
-
               ],
               "gradientRatio": [],
               "maxLabelWidth": 198,
