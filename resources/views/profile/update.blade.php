@@ -89,6 +89,7 @@
                           @endif
                       </div>
                     </div>
+                    <center>
                     <div class="form-group">
                       <label class="col-md-3 col-md-3 col-xs-12 control-label"></label>
                       <div class="col-md-8 col-sm-6 col-xs-12 col-sm-6 col-xs-12">
@@ -97,6 +98,7 @@
                         <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate">Batal
                       </div>
                     </div>
+                  </center>
                 </form>
               </div>
             </div>
