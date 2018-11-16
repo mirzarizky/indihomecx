@@ -126,7 +126,7 @@
               "angle": 29.7,
               "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
               "depth3D": 21,
-              "baseColor": "#E72222",
+              "baseColor": "#E72222, #2A0CD0",
               "colors": [
                 "#FF0F00",
                 "#FF6600",

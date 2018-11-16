@@ -63,7 +63,7 @@
                 </li>
                 @if(Auth::user()->role->name == 'admin')
                     <li>
-                        <a href="{{route('admin.model.index', ['model' => 'user'])}}"><i class="fa fa-users"></i> Users</a>
+                        <a href="{{route('admin.model.index', ['model' => 'user'])}}"><i class="fa fa-users"></i> Pengguna</a>
                     </li>
                     <li>
                         <a href="{{route('admin.model.index', ['model' => 'order'])}}"><i class="fa fa-check-square-o"></i> Order</a>

@@ -17,6 +17,7 @@
                       </div>
                   @endif
           </center>
+          <center>
             <div class="x_content">
               <div class="container">
                 <div class="row">
@@ -53,9 +54,9 @@
                       <div class="form-group">
                         <label class="col-md-3 col-sm-3 col-xs-12 control-label"></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <button type="submit" class="btn btn-danger ftco-animate">Save Changes</button>
+                          <button type="submit" class="btn btn-danger ftco-animate">Simpan Perubahan
                           <span></span>
-                          <button type="reset" href="{{route('profile.index')}}" class="btn btn-default ftco-animate"> Cancel </button>
+                          <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate"> Batal
                         </div>
                       </div>
                   </form>
@@ -65,6 +66,7 @@
               </hr>
               <div class="clearfix"></div>
               <br/>
+            </center>
         </div>
       </div>
     </div>
