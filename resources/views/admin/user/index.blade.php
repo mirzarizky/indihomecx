@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-6">
               <div>
-                <a href="{{route('admin.model.form', ['model' => 'user'])}}" class="btn btn-default ftco-animate pull-right" style="padding: 14px 20px; font-size: 15px;"> <i class="fa fa-plus-square"></i> &nbsp &nbsp Tambah User </a>
+                <a href="{{route('admin.model.form', ['model' => 'user'])}}" class="btn btn-default ftco-animate pull-right" style="padding: 14px 20px; font-size: 15px;"> <i class="fa fa-plus-square"></i> &nbsp &nbsp Tambah Pengguna </a>
               </div>
             </div>
           </div>
