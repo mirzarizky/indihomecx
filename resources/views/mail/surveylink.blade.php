@@ -105,7 +105,7 @@
 
 	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#2b2a2a" style="background:#2b2a2a;">
 		<tr>
-			<td align="center" valign="top" style="background-image: url(images/bg.png); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: #2b2a2a;">
+			<td align="center" valign="top" style="background-image: url(images/bgsss.png); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: #2b2a2a;">
 				<table width="500" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
 					<tr>
 						<td height="80" align="left" valign="top">&nbsp;</td>
@@ -114,7 +114,8 @@
 						<td align="left" valign="top" bgcolor="#FFFFFF" style="background:#FFF;">
 							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 								<tr>
-									<td align="center" valign="top"><img src="images/border.png" width="500" height="4" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
+
+									<td align="center" valign="top"><img src="{{asset('images/border.png')}}" width="500" height="4" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
 								</tr>
 								<tr>
 									<td align="center" valign="top">
@@ -138,7 +139,7 @@
 																					<td align="center" valign="top">&nbsp;</td>
 																				</tr>
 																				<tr>
-																					<td align="center" valign="top"><a href="#"><img mc:edit="logo" editable="true" src="images/logo.png" width="153" alt="" /></a></td>
+																					<td align="center" valign="top"><a href="#"><img mc:edit="logo" editable="true" src="{{asset('images/logo.png')}}" width="153" alt="" /></a></td>
 																				</tr>
 																			</table>
 																			<table border="0" align="right" cellpadding="0" cellspacing="0" class="main">
@@ -158,7 +159,7 @@
 															</td>
 														</tr>
 														<tr>
-															<td align="left" valign="top"><img src="images/border2.png" width="500" height="23" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
+															<td align="left" valign="top"><img src="{{asset('images/border2.png')}}" width="500" height="23" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
 														</tr>
 													</table>
 												</td>
@@ -239,7 +240,7 @@
 												<td align="center" valign="top">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td align="left" valign="top"><img src="images/border2.png" width="500" height="23" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
+															<td align="left" valign="top"><img src="{{asset('images/border2.png')}}" width="500" height="23" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
 														</tr>
 														<tr>
 															<td align="left" valign="top">
@@ -268,7 +269,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td align="center" valign="top"><img src="images/border.png" width="500" height="4" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
+									<td align="center" valign="top"><img src="{{asset('images/border.png')}}" width="500" height="4" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
 								</tr>
 							</table>
 						</td>
