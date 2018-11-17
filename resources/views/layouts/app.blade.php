@@ -71,13 +71,13 @@
                     <li><a href="{{route('admin.model.index', ['model' => 'berkas'])}}"><i class="fa fa-file-excel-o"></i> Berkas</a>
                     </li>
                     <li>
-                        <a href="{{route('admin.model.index', ['model' => 'sto'])}}"><i class="fa fa-university"></i> Cabang</a>
+                        <a href="{{route('admin.model.index', ['model' => 'sto'])}}"><i class="fa fa-university"></i> Cabang STO</a>
                     </li>
                     <li>
                         <a><i class="fa fa-pencil-square-o"></i> Survei <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ route('survey.view') }}">Lihat Form Survei</a></li>
-                            <li><a href="{{route('admin.model.index', ['model' => 'kriteria'])}}">Edit Faktor Kepuasan Survei</a></li>
+                            <li><a href="{{route('admin.model.index', ['model' => 'kriteria'])}}">Faktor Kepuasan Survei</a></li>
                       </ul>
                     </li>
                 @else

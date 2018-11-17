@@ -99,8 +99,8 @@
       console.log(actionPath);
       event.preventDefault(); // prevent form submit
       swal({
-          title: "Hapus " + username + " sebagai faktor kepuasan dalam survei?",
-          text: "",
+          title: "Hapus faktor kepuasan ini?",
+          text: "Setelah dihapus, " +username+ " tidak akan ada dalam survei online sebagai salah satu faktor kepuasan.",
           type: "warning",
           showCancelButton: true,
           confirmButtonColor: "#DD6B55",

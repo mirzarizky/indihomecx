@@ -63,6 +63,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <button type="submit" class="btn btn-danger ftco-animate">Simpan Perubahan
                             <span></span>
+                            </form>
                           <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate">Batal
                         </div>
                       </div>
