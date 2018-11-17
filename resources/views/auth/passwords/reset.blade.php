@@ -50,7 +50,7 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="token" value="{{ $token }}">
 
-                    <h1>Reset Password</h1>
+                    <h1>Perbarui Password</h1>
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                         <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" placeholder="E-mail Address" required autofocus>
                         @if ($errors->has('email'))
@@ -81,7 +81,7 @@
                     <div class="form-group">
                         <div>
                             <button type="submit" class="btn btn-danger ftco-animate">
-                                Reset Password
+                                Simpan Password Baru
                             </button>
                         </div>
                     </div>
