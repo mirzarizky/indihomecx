@@ -114,7 +114,6 @@
 						<td align="left" valign="top" bgcolor="#FFFFFF" style="background:#FFF;">
 							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 								<tr>
-
 									<td align="center" valign="top"><img src="{{asset('images/border.png')}}" width="500" height="4" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
 								</tr>
 								<tr>

@@ -104,7 +104,7 @@
 
 	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#2b2a2a" style="background:#2b2a2a;">
 		<tr>
-			<td align="center" valign="top" style=" -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: #2b2a2a;">
+			<td align="center" valign="top" style="-webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: #d4d4d4;">
 				<table width="500" border="0" align="center" cellpadding="0" cellspacing="0" class="main">
 					<tr>
 						<td height="80" align="left" valign="top">&nbsp;</td>
@@ -113,7 +113,7 @@
 						<td align="left" valign="top" bgcolor="#FFFFFF" style="background:#FFF;">
 							<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 								<tr>
-									<td align="center" valign="top"><img src="images/border.png" width="500" height="4" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
+									<td align="center" valign="top"><img src="{{asset('images/border.png')}}" width="500" height="4" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
 								</tr>
 								<tr>
 									<td align="center" valign="top">
@@ -137,7 +137,7 @@
 																					<td align="center" valign="top">&nbsp;</td>
 																				</tr>
 																				<tr>
-																					<td align="center" valign="top"><a href="#"><img mc:edit="logo" editable="true" src="images/logo.png" width="153" alt="" /></a></td>
+																					<td align="center" valign="top"><a href="#"><img mc:edit="logo" editable="true" src="{{asset('images/logo.png')}}" width="153" alt="" /></a></td>
 																				</tr>
 																			</table>
 																			<table border="0" align="right" cellpadding="0" cellspacing="0" class="main">
@@ -157,7 +157,7 @@
 															</td>
 														</tr>
 														<tr>
-															<td align="left" valign="top"><img src="images/border2.png" width="500" height="23" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
+															<td align="left" valign="top"><img src="{{asset('images/border2.png')}}" width="500" height="23" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
 														</tr>
 													</table>
 												</td>
@@ -175,14 +175,14 @@
 															<td align="left" valign="top">
 																<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
 																	<tr>
-																		<td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:32px; color:#252525; font-weight:normal; line-height:28px; padding:6px 0px 12px 0px;" mc:edit="welcome-title">
-																			<multiline>Hai, {!! $data['nama'] !!},</multiline>
+																		<td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:20px; color:#252525; font-weight:normal; line-height:28px; padding:6px 0px 12px 0px;" mc:edit="welcome-title">
+																			<multiline>{!! $data['nama'] !!},</multiline>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td align="left" valign="top" style="font-family:Verdana, Geneva, sans-serif; font-size:15px; color:#4a4a4a; font-weight:normal; line-height:26px; padding-left:2px; padding-top:12px;" mc:edit="welcome-title-inner">
+																		<td align="left" valign="top" style="font-family:Verdana, Geneva, sans-serif; font-size:13px; color:#4a4a4a; font-weight:normal; line-height:26px; padding-left:2px; padding-top:12px;" mc:edit="welcome-title-inner">
 																			<multiline>
-																				Anda telah terdaftar menjadi {!! $data['role'] !!} pada Indihome Customer Experience.
+																				Akun anda telah terdaftar pada Indihome Customer Experience.
 																				<br> <br>
 																				<p>Berikut adalah informasi akun anda :</p>
 																				<p style="font-weight:bold;">Email : {!! $data['email'] !!}</p>
@@ -208,12 +208,12 @@
 																				</tr>
 
 																				<tr>
-																					<td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:20px; font-weight:normal; color:#f56333; padding-bottom:4px;" mc:edit="manager">
+																					<td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:15px; font-weight:normal; color:#f56333; padding-bottom:4px;" mc:edit="manager">
 																						<multiline>Administrator</multiline>
 																					</td>
 																				</tr>
 																				<tr>
-																					<td align="left" valign="top" style="font-family:Verdana, Geneva, sans-serif; font-size:15px; color:#4a4a4a; font-weight:normal; line-height:26px; padding-bottom:20px;">
+																					<td align="left" valign="top" style="font-family:Verdana, Geneva, sans-serif; font-size:13px; color:#4a4a4a; font-weight:normal; line-height:26px; padding-bottom:20px;">
 																						<multiline>Indihome Customer Experience</multiline>
 																					</td>
 																				</tr>
@@ -236,7 +236,7 @@
 												<td align="center" valign="top">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td align="left" valign="top"><img src="images/border2.png" width="500" height="23" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
+															<td align="left" valign="top"><img src="{{asset('images/border2.png')}}" width="500" height="23" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
 														</tr>
 														<tr>
 															<td align="left" valign="top">
@@ -265,7 +265,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td align="center" valign="top"><img src="images/border.png" width="500" height="4" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
+									<td align="center" valign="top"><img src="{{asset('images/border.png')}}" width="500" height="4" alt="" style="display:block;width:100% !important; height:auto !important; " /></td>
 								</tr>
 							</table>
 						</td>
