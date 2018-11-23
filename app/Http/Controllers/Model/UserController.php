@@ -57,7 +57,7 @@ class UserController extends Controller
         {
             return $this->updatePassword($request);
         } else {
-            return redirect()->back()->withErrors(['oldPassword'=> 'Hahaha Salah nih!']);
+            return redirect()->back()->withErrors(['oldPassword'=> 'Password lama tidak sesuai.']);
         }
     }
 
@@ -214,6 +214,6 @@ class UserController extends Controller
                 'defaultPassword' => false
             ]);
 
-        return redirect()->route('profile.index');
+        return redirect()->route('profile.index')->with(['status' => 'Password berhasil diubah.']);;
     }
 }
