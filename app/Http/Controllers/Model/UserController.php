@@ -70,7 +70,7 @@ class UserController extends Controller
         $request->validate([
             'photo' => 'file|nullable|mimes:jpeg,jpg,png|max:2048',
             'nama' => 'required|string|max:255',
-            'noHp' => 'string|nullable',
+            'noHp' => 'required|digits_between:11,12',
             'email' => 'required|string|email|max:255|'
         ]);
         $user = User::FindOrFail(Auth::user()->id);
