@@ -34,8 +34,8 @@
                   </div>
                 <div class="col-md-9">
                     <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
-                      <label for="role" class="col-lg-3 col-lg-3 col-xs-12 control-label">Hak Akses:</label>
-                        <div class="col-lg-8 col-sm-6 col-xs-12 col-sm-6 col-xs-12">
+                      <label for="role" class="col-lg-3 col-md-8 col-sm-4 col-xs-12 control-label">Hak Akses:</label>
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                           <input id="role" type="text" class="form-control" name="role" value="@if ($user->role->name == 'admin')Administrator @else Supervisor @endif" readonly>
                           @if ($errors->has('role'))
                               <span class="help-block">
@@ -46,8 +46,8 @@
                         </div>
                     </div>
                     <div class="form-group{{ $errors->has('nik') ? ' has-error' : '' }}">
-                      <label for="kode" class="col-lg-3 col-lg-3 col-xs-12 control-label">NIK:</label>
-                      <div class="col-lg-8 col-sm-6 col-xs-12 col-sm-6 col-xs-12">
+                      <label for="kode" class="col-lg-3 col-md-8 col-sm-4 col-xs-12 control-label">NIK:</label>
+                      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                         <input id="kode" class="form-control" type="text" name="kode" value="{{ $user->nik }}" readonly>
                             @if ($errors->has('nik'))
                               <span class="help-block">
@@ -57,8 +57,8 @@
                       </div>
                     </div>
                     <div class="form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
-                      <label for="nama" class="col-lg-3 col-lg-3 col-xs-12 control-label">Nama:</label>
-                      <div class="col-lg-8 col-sm-6 col-xs-12 col-sm-6 col-xs-12">
+                      <label for="nama" class="col-lg-3 col-md-8 col-sm-4 col-xs-12 control-label">Nama:</label>
+                      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                         <input id="nama" type="text" placeholder="Nama Lengkap" class="form-control" name="nama" value="{{ $user->name }}" required data-parsley-error-message="Nama harus diisi.">
                             @if ($errors->has('nama'))
                               <span class="help-block">
@@ -68,8 +68,8 @@
                       </div>
                     </div>
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                      <label for="email" class="col-lg-3 col-lg-3 col-xs-12 control-label">Email:</label>
-                      <div class="col-lg-8 col-sm-6 col-xs-12 col-sm-6 col-xs-12">
+                      <label for="email" class="col-lg-3 col-md-8 col-sm-4 col-xs-12 control-label">Email:</label>
+                      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                         <input id="email" type="email" placeholder="Alamat Email" class="form-control" name="email" value="{{ $user->email }}" data-parsley-type="email" required data-parsley-error-message="Harus diisi dengan email yang valid.">
                           @if ($errors->has('email'))
                               <span class="help-block">
@@ -79,9 +79,9 @@
                       </div>
                     </div>
                     <div class="form-group{{ $errors->has('noHp') ? ' has-error' : '' }}">
-                      <label for="noHp" class="col-lg-3 col-lg-3 col-xs-12 control-label">No telp:</label>
+                      <label for="noHp" class="col-lg-3 col-md-8 col-sm-4 col-xs-12 control-label">No telp:</label>
                       <div class="col-md-8 col-sm-6 col-xs-12 col-sm-6 col-xs-12">
-                        <input id="noHp" type="text" class="form-control" placeholder="Nomor Hp" name="noHp" value="{{ $user->noHp }}">
+                        <input id="noHp" type="text" class="form-control" placeholder="Nomor Hp" name="noHp" value="{{ $user->noHp }}" data-parsley-error-message="No HP harus diisi.">
                           @if ($errors->has('noHp'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('noHp') }}</strong>
