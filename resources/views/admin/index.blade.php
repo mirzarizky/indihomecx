@@ -21,7 +21,7 @@
           <div class="icon"><i class="fa fa-share" style="color:#F44336;"></i></div>
           <div class="count">XXX</div>
           <h3>Survei Dikirim</h3>
-          <p style="font-size:10pt">Jumlah link survei yang sudah dikirimkan ke pelanggan.</p>
+          <p style="font-size:10pt">Permintaan survei yang sudah dikirimkan.</p>
         </div>
       </div>
       <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -47,7 +47,7 @@
           <div class="icon"><i class="fa fa-university" style="color:#F44336;"></i></div>
           <div class="count">{{ $count['cabang'] }}</div>
           <h3>STO</h3>
-          <p style="font-size:10pt">STO yang terintergrasi dengan Indihome-CX saat ini</p>
+          <p style="font-size:10pt">STO yang terintergrasi dengan I-CX saat ini</p>
         </div>
       </div>
       <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
