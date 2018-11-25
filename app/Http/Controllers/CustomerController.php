@@ -27,7 +27,7 @@ class CustomerController extends Controller
                 if(!$order->isSurvei) {
                     return redirect()->route('survei')->with(['id' => $order->id]);
                 } elseif ($order->isSurvei) {
-                    return view('notify')->with(['title'=>'Oops!','message'=>'Maaf, sepertinya anda sudah mengisi survei ini.']);
+                    return view('notify')->with(['title'=>'Oops!','message'=>'Maaf, anda sudah mengisi survei ini.']);
                 } else {
                     return abort(404);
                 }
