@@ -41,7 +41,7 @@
                     <div class="form-group{{ $errors->has('nik') ? ' has-error' : '' }}">
                       <label for="nik" class="control-label col-md-3 col-sm-3 col-xs-12">NIK*</label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="nik" name="nik" class="form-control" placeholder="NIK Perusahaan terdiri dari 6 angka." data-parsley-pattern="[0-9]{6}" required="required" data-parsley-error-message="NIK harus diisi dengan angka dan terdiri dari 6 karakter.">
+                        <input id="nik" name="nik" class="form-control" placeholder="NIK Perusahaan terdiri dari 6 angka." data-parsley-pattern="[0-9]{6}" value="{{old('nik')}}" required="required" data-parsley-error-message="NIK harus diisi dengan angka dan terdiri dari 6 karakter.">
                           @if ($errors->has('nik'))
                               <span class="help-block">
                                   <strong>{{ $errors->first('nik') }}</strong>
