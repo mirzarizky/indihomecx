@@ -31,9 +31,9 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <button type="submit" class="btn btn-danger ftco-animate">Tambah Faktor
+                          <button type="submit" class="submit btn btn-danger ftco-animate">Tambah Faktor</button>
                           <span></span>
-                          <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate"> Batal
+                          <a type="button" href="{{route('admin.model.index', ['model' => 'kriteria'])}}" class="btn btn-default ftco-animate"> Batal</a>
                         </div>
                       </div>
                   </form>
@@ -61,7 +61,7 @@
         validateFront();
       });
 
-      $('#form-valid .btn').on('click', function() {
+      $('#form-valid .submit').on('click', function() {
         $('#form-valid').parsley().validate();
         validateFront();
       });

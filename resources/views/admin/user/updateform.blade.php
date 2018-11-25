@@ -84,7 +84,7 @@
                       <div class="col-md-6 col-sm-6 col-xs-12">
                         <button type="submit" class="btn btn-danger ftco-animate"> Simpan Perubahan </button>
                         <span></span>
-                        <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate">Batal </button>
+                        <a type="button" href="{{route('admin.model.index', ['model' => 'user'])}}" class="btn btn-default ftco-animate">Batal </a>
                       </div>
                     </div>
                   </form>

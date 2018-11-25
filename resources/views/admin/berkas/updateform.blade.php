@@ -61,10 +61,10 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <button type="submit" class="btn btn-danger ftco-animate">Simpan Perubahan
+                          <button type="submit" class="btn btn-danger ftco-animate">Simpan Perubahan</button>
                             <span></span>
                             </form>
-                          <button type="reset" onclick="history.back()" class="btn btn-default ftco-animate">Batal
+                            <a href="{{route('admin.model.index', ['model' => 'berkas'])}}" class="btn btn-default ftco-animate">Batal</a>
                         </div>
                       </div>
                     </center>
@@ -104,7 +104,7 @@
         validateFront();
       });
 
-      $('#form-valid .btn').on('click', function() {
+      $('#form-valid .submit').on('click', function() {
         $('#form-valid').parsley().validate();
         validateFront();
       });
