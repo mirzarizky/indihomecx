@@ -90,16 +90,12 @@
                   </thead>
                   <tbody>
                   @foreach($allSurvey as $survey)
-                    <tr>
-                      <td>{{$survey->pesanan_id}}</td>
-                      <td>
-                          @if(!empty($survey->komentar))
-                              {{$survey->komentar}}
-                          @else
-                              N/A
-                          @endif
-                      </td>
-                    </tr>
+                      @if(!empty($survey->komentar))
+                        <tr>
+                          <td>{{$survey->pesanan_id}}</td>
+                          <td>{{$survey->komentar}}</td>
+                        </tr>
+                      @endif
                   @endforeach
                   </tbody>
                 </table>
