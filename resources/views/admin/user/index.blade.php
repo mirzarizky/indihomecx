@@ -48,7 +48,7 @@
                         @endif
                       </td>
                       <td class="text-center">
-                          @if ($user->role->name == 'supervisor')
+                          @if ($user->id != Auth::user()->id)
                             <center>
                               <a href="{{route('admin.model.updateForm', ['model' => 'user', 'id' => $user->id])}}" class="btn-xs btn btn-dark ftco-animate">Ubah</a>
                               <a onclick="hapusFunction('{{$user->name}}', '{{route('admin.model.delete', ['model' => 'user', 'id' => $user->id])}}')" class="btn-xs btn btn-danger ftco-animate">Hapus</a>
