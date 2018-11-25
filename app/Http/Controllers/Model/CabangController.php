@@ -22,7 +22,7 @@ class CabangController extends Controller
     public function create(Request $request) {
 
         $request->validate([
-            'kode' => 'bail|required|unique:cabang|max:5',
+            'kode' => 'required|unique:cabang|alpha|max:5',
             'nama' => 'required',
         ]);
 
@@ -42,7 +42,7 @@ class CabangController extends Controller
 
     public function update(Request $request, $id) {
         $request->validate([
-            'kode' => 'bail|required|max:5',
+            'kode' => 'required|unique:cabang|alpha|max:5',
             'nama' => 'required',
         ]);
 
