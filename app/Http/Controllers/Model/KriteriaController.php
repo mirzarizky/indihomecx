@@ -33,7 +33,7 @@ class KriteriaController extends Controller
         ]);
         return redirect()
             ->route('admin.model.index', ['model' => 'kriteria'])
-            ->with(['status' => 'Kriteria berhasil ditambahkan!']);
+            ->with(['status' => 'Faktor Kepuasan berhasil ditambahkan!']);
     }
 
     public function updateForm($id) {
@@ -54,7 +54,7 @@ class KriteriaController extends Controller
 
         return redirect()
             ->route('admin.model.index', ['model' => 'kriteria'])
-            ->with(['status' => 'Kriteria berhasil diperbaharui!']);
+            ->with(['status' => 'Faktor Kepuasan berhasil diubah!']);
     }
 
     public function delete($id)
@@ -63,6 +63,6 @@ class KriteriaController extends Controller
 
         return redirect()
             ->route('admin.model.index', ['model' => 'kriteria'])
-            ->with(['status' => 'Kriteria berhasil dihapus!']);
+            ->with(['status' => 'Faktor Kepuasan berhasil dihapus!']);
     }
 }
