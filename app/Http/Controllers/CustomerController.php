@@ -54,7 +54,7 @@ class CustomerController extends Controller
         $validator = Validator::make($request->all(), [
             'rating' => 'required|min:1|max:5',
             'factors' => 'required|array',
-            'feedback' => 'max:160',
+            'feedback' => 'max:450',
         ]);
         if ($validator->fails()) {
             return redirect()->route('survei')->with(['id' => $request->order_id])

@@ -46,8 +46,14 @@
                                         <span class="fa fa-star-o" data-rating="3"></span>
                                         <span class="fa fa-star-o" data-rating="4"></span>
                                         <span class="fa fa-star-o" data-rating="5"></span>
-                                        <input type="hidden" name="rating" class="rating-value" value="0" required>
+                                        <input type="hidden" name="rating" class="rating-value" value="{{old('rating')}}" required>
                                     </div>
+                                    @if ($errors->has('rating'))
+                                        <span class="help-block">
+                                            <strong style="color: red;">{{ $errors->first('rating') }}</strong>
+                                        </span>
+                                        <br/>
+                                    @endif
                                 </div>
                             </div>
                             <p class="lead">Silakan pilih faktor kepuasan anda dari layanan kami.</p>
@@ -57,8 +63,20 @@
                                         <label for="checkbox{{$factor->id}}">{{$factor->nama}}</label>
                                     </div>
                                 @endforeach
+                                @if ($errors->has('factors'))
+                                    <span class="help-block">
+                                        <strong style="color: red;">{{ $errors->first('factors') }}</strong>
+                                    </span>
+                                    <br/>
+                                @endif
                             <p class="lead" >Silakan berikan komentar dan saran terhadap layanan kami. (Optional)</p>
-                            <textarea title="feedback" name="feedback" class="form-control" rows="3">{{old('feedback')}}</textarea>
+                            <textarea title="feedback" name="feedback" class="form-control {{ !$errors->has('feedback') ?: 'has-error' }}" rows="3">{{old('feedback')}}</textarea>
+                                @if ($errors->has('feedback'))
+                                    <span class="help-block">
+                                        <strong style="color: red;">{{ $errors->first('feedback') }}</strong>
+                                    </span>
+                                    <br/>
+                                @endif
                             @guest
                                 <input type="submit" class="button" value="Submit">
                             @endguest
