@@ -12,7 +12,7 @@
           <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <div class="tile-stats">
               <div class="icon"><i class="fa fa-share" style="color:#F44336;"></i></div>
-              <div class="count">XXX</div>
+              <div class="count">{{ $total['sentSurvei'] }}</div>
               <h3>Survei Dikirim</h3>
               <p>Jumlah link survei yang sudah dikirimkan ke pelanggan.</p>
             </div>
@@ -30,7 +30,7 @@
               <div class="icon"><i class="fa fa-check-square-o" style="color:#F44336;"></i></div>
               <div class="count">{{$total['order']}}</div>
               <h3>Completed WO</h3>
-              <p>Jumlah WO yang selesai minggu ini.</p>
+              <p>Jumlah WO yang selesai bulan ini.</p>
             </div>
           </div>
         </div>

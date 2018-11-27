@@ -29,13 +29,15 @@ class AdminController extends Controller
         $totalUsers = User::all()->count();
         $totalCabang = Cabang::all()->count();
         $totalSurvei = Survei::all()->count();
+        $totalSentSurvei = Pesanan::whereNotNull('emailPelanggan')->count();
         $totalBerkas = Berkas::all()->count();
-        $totalOrderThisWeek = Pesanan::whereBetween('tanggal', [Carbon::now()->startOfWeek(),Carbon::now()->endOfWeek()])->count();
+        $totalOrderThisMonth = Pesanan::whereBetween('tanggal', [Carbon::now()->startOfMonth(),Carbon::now()->endOfMonth()])->count();
         $count = array(
             'users' => $totalUsers,
             'cabang' => $totalCabang,
-            'orders' => $totalOrderThisWeek,
+            'orders' => $totalOrderThisMonth,
             'survei' => $totalSurvei,
+            'sent' => $totalSentSurvei,
             'berkas' => $totalBerkas
         );
         return view('admin.index', compact('count'));
