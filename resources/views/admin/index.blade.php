@@ -19,7 +19,7 @@
       <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="tile-stats">
           <div class="icon"><i class="fa fa-share" style="color:#F44336;"></i></div>
-          <div class="count">XXX</div>
+          <div class="count">{{ $count['sent'] }}</div>
           <h3>Survei Dikirim</h3>
           <p style="font-size:10pt">Permintaan survei yang sudah dikirimkan.</p>
         </div>
@@ -39,7 +39,7 @@
           <div class="icon"><i class="fa fa-check-square-o" style="color:#F44336;"></i></div>
           <div class="count">{{ $count['orders'] }}</div>
           <h3><i>Work Order</i></h3>
-          <p style="font-size:10pt">Jumlah <i>work order</i> yang keluar minggu ini</p>
+          <p style="font-size:10pt">Jumlah <i>work order</i> yang keluar bulan ini</p>
         </div>
       </div>
       <div class="animated flipInY col-lg-4 col-md-4 col-sm-4 col-xs-12">

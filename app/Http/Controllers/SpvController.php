@@ -22,13 +22,15 @@ class SpvController extends Controller
     {
         $factors = Kriteria::all();
         $totalDetailFactor = DetailKriteria::count();
-        $totalOrderThisWeek = Pesanan::whereBetween('tanggal', [Carbon::now()->startOfWeek(),Carbon::now()->endOfWeek()])->count();
+        $totalOrderThisWeek = Pesanan::whereBetween('tanggal', [Carbon::now()->startOfMonth(),Carbon::now()->endOfMonth()])->count();
+        $totalSentSurvei = Pesanan::whereNotNull('emailPelanggan')->count();
         $totalSurvey = Survei::count();
         $ratings = Survei::orderBy('nilai', 'asc')->get()->groupBy('nilai');
         $total = array(
             'order' => $totalOrderThisWeek,
             'survey' => $totalSurvey,
-            'detailFactor' => $totalDetailFactor
+            'detailFactor' => $totalDetailFactor,
+            'sentSurvei' => $totalSentSurvei
         );
         $allSurvey = Survei::paginate(1000);
 
