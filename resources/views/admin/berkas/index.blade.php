@@ -47,29 +47,44 @@
                     <td class="text-center">{{$berkas->totalEmail}}</td>
                     <td class="text-center">{{$berkas->totalPesanan}}</td>
                     <td class="text-center">
-                      @if($berkas->isSent)
-                        <span class="label label-success">Terkirim</span>
-                      @else
-                        <span class="label label-warning">Belum Terkirim</span>
-                      @endif
-                          </td>
+                      @switch($berkas->berkasStatus)
+                        @case(0)
+                            <span class="label label-default">
+                                {{$berkas->status()}}
+                            </span>
+                            @break
+                        @case(2)
+                        @case(4)
+                            <span class="label label-success">
+                                {{$berkas->status()}}
+                            </span>
+                            @break
+                        @default
+                            <span class="label label-warning">
+                                {{$berkas->status()}}
+                            </span>
+                            @break
+                      @endswitch
+                    </td>
                     <td>
-                      <a class="btn btn-dark ftco-animate btn-xs" href="{{route('admin.model.updateForm', ['model' => 'berkas', 'id' => $berkas->id])}}">Ubah</a>
-                        {{--TODO : Berkas Status please--}}
-                      @if($berkas->isSent)
-                        <a onclick="hapusFunction('{{$berkas->nama}}','{{route('admin.model.delete', ['model' => 'berkas', 'id' => $berkas->id])}}')" class="btn btn-danger ftco-animate btn-xs">Hapus</a>
-                        <a onclick="kirimFunction()" class="btn btn-default ftco-animate btn-xs" disabled>Kirim</a>
-                      @else
-                        <a onclick="hapusFunction('{{$berkas->nama}}','{{route('admin.model.delete', ['model' => 'berkas', 'id' => $berkas->id])}}')" class="btn btn-danger ftco-animate btn-xs">Hapus</a>
-                        <a onclick="kirimFunction()" class="btn btn-default ftco-animate btn-xs">Kirim</a>
-                      @endif
+                        @switch($berkas->berkasStatus)
+                            @case(2)
+                                <a onclick="kirimFunction('{{route('berkas.send', ['id' => $berkas->id])}}')" class="btn btn-default ftco-animate btn-xs">Kirim</a>
+                            @break
+                            @case(4)
+                                <a class="btn btn-dark ftco-animate btn-xs" href="{{route('admin.model.update', ['model' => 'berkas', 'id' => $berkas->id])}}" >Ubah</a>
+                                <a onclick="hapusFunction('{{$berkas->nama}}','{{route('admin.model.delete', ['model' => 'berkas', 'id' => $berkas->id])}}')" class="btn btn-danger ftco-animate btn-xs">Hapus</a>
+                            @break
+                        @endswitch
                     </td>
                   </tr>
                   @endforeach
                 </tbody>
               </table>
               <form id="hapus" method="get" style="display:none;" action=""></form>
-              <form id="kirim" method="get" style="display:none;" action="http://google.com"></form>
+              <form id="kirim" method="post" style="display:none;">
+                  {{csrf_field()}}
+              </form>
             </div>
           </div>
         </div>
@@ -144,7 +159,7 @@
     }
 
     // swal kirim
-    function kirimFunction() {
+    function kirimFunction(actionPath) {
       event.preventDefault(); // prevent form submit
       swal({
           title: "Kirim?",
@@ -158,7 +173,9 @@
         },
         function(isConfirm) {
           if (isConfirm) {
-            document.getElementById("kirim").submit();
+            var sendForm = document.getElementById("kirim");
+            sendForm.action = actionPath;
+            sendForm.submit();
           } else {
             swal("", "Anda membatalkan.", "error");
           }
