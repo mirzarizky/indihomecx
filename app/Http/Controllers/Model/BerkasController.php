@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Model;
 
 use App\Berkas;
 use App\Jobs\CreatePesananFromBerkas;
+use App\Jobs\CreateSendingMailSMS;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -13,6 +14,7 @@ class BerkasController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('isAdmin')->only(['sendLink']);
     }
 
     public function index() {
@@ -111,6 +113,23 @@ class BerkasController extends Controller
             return redirect()
                 ->route('admin.model.index', ['model' => 'berkas'])
                 ->with(['status' => 'Berkas berhasil dihapus.']);
+        }
+    }
+
+    public function sendLink($id)
+    {
+        $berkas = Berkas::findOrFail($id);
+        if($berkas->berkasStatus == 2) {
+            $berkas->berkasStatus = 3;
+            $berkas->save();
+            CreateSendingMailSMS::dispatch($id);
+            return redirect()
+                ->route('admin.model.index', ['model' => 'berkas'])
+                ->with(['status' => 'Berkas sedang memproses pengiriman.']);
+        } else {
+            return redirect()
+                ->route('admin.model.index', ['model' => 'berkas'])
+                ->with(['status' => 'Gagal.']);
         }
     }
 }

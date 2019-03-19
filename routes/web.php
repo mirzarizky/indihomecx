@@ -37,6 +37,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/{model}/{id}/delete', 'AdminController@delete')->name('admin.model.delete');
 
     Route::get('berkas/{id}/download', 'Model\BerkasController@download')->name('berkas.download');
+    Route::post('berkas/{id}/send', 'Model\BerkasController@sendLink')->name('berkas.send');
 });
 Route::prefix('spv')->group(function () {
     Route::get('/', 'SpvController@indexSpv')->name('spv.index');
